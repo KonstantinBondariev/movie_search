@@ -11,10 +11,11 @@ const url = 'https://www.omdbapi.com/?apikey=5e826b4b';
 })
 export class MovieSearchService {
   constructor(private http: HttpClient) {}
-  cureantMovies?: MovieInterface[];
 
   getData(): Observable<OMDbAPIResponseInterface | undefined> {
-    return this.http.get<OMDbAPIResponseInterface | undefined>(`${url}`);
+    return this.http.get<OMDbAPIResponseInterface | undefined>(
+      `${url}&s=$game`
+    );
   }
 
   searchMovie(

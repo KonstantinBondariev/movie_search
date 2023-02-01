@@ -1,10 +1,14 @@
-<button (click)="getData()">log</button>
-
-<div>
-  <div *ngFor="let movie of movies" class="movies">
-    <div class="movie">
+<div class="movies">
+  <div *ngFor="let movie of movies" class="movie">
+    <div class="movie__poster poster">
       <img src="{{movie.Poster}}" alt="{{movie.Title}}">
-      <div>{{movie.Title}}{{movie.Year}}</div>
+      <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
+      </div>
+      <ng-template #thenBlock><img ngSrc="img/film.png" alt="movie"></ng-template>
+      <ng-template #elseBlock><img ngSrc="./app/components/movies/img/series.png" alt="series"></ng-template>
+    </div>
+    <div class="movie__title">
+      {{movie.Title}}{{movie.Year}}
     </div>
   </div>
 </div>

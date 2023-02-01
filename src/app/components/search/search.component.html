@@ -10,11 +10,4 @@
   <button (click)="movieSearch(movieTitle, movieYear)">Search</button>
 </div>
 
-<!-- <div class="movies">
-  <div *ngFor="let movie of movies" class="movie">
-    <div>
-      <img src="{{movie.Poster}}" alt="{{movie.Title}}">
-      <div>{{movie.Title}}{{movie.Year}}</div>
-    </div>
-  </div>
-</div> -->
+<app-movies [movies]="movies"></app-movies>

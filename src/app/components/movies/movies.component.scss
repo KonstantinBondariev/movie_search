@@ -1,3 +1,11 @@
 .movies {
-  color: blue;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

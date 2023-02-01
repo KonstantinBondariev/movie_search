@@ -11,7 +11,7 @@ import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response
 export class SearchComponent implements OnInit {
   movieTitle: string = '';
   movieYear: string = '';
-  @Input() movies?: MovieInterface[];
+  movies?: MovieInterface[];
 
   constructor(private movieSearchService: MovieSearchService) {}
 
@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
         this.movies = res?.Search;
+        console.log(this.movies);
       },
     });
   }
