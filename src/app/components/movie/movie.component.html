@@ -1,0 +1,29 @@
+<ng-template [ngIf]="movie">
+  <div class="movie">
+    <h2 class="movie__title">{{movie.Title}}</h2>
+
+    <div>
+      <img src="{{movie.Poster}}" alt="movie.Title">
+    </div>
+
+    <div class="movie__ratings">
+      Ratings:
+      <ul>
+        <li>IMDB rating: {{movie.imdbRating}}</li>
+        <li *ngFor="let source of movie.Ratings">{{source.Source}}: {{source.Value}}</li>
+      </ul>
+    </div>
+
+    <div>
+      Released: {{movie.Released}}
+    </div>
+
+    <div>
+      Director: {{movie.Director}}
+    </div>
+
+    <div>
+      Genre: {{movie.Genre}}
+    </div>
+  </div>
+</ng-template>

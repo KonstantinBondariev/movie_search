@@ -1,6 +1,6 @@
 <div class="movies">
   <div *ngFor="let movie of movies" class="movie">
-    <div class="movie__poster poster">
+    <div class="movie__poster poster" (click)="cureantImdbID=movie.imdbID">
       <img src="{{movie.Poster}}" alt="{{movie.Title}}">
       <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
       </div>
@@ -12,3 +12,5 @@
     </div>
   </div>
 </div>
+
+<app-movie [cureantImdbId]="cureantImdbID"></app-movie>

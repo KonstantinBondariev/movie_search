@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { OMDbAPIResponseInterface } from '../shared/types/omdb-api-response-interface';
 import { MovieInterface } from '../shared/types/movie-interface';
+import { MovieFullDataInterface } from '../shared/types/movie-full-data-interface';
 
 const url = 'https://www.omdbapi.com/?apikey=5e826b4b';
 
@@ -12,9 +13,15 @@ const url = 'https://www.omdbapi.com/?apikey=5e826b4b';
 export class MovieSearchService {
   constructor(private http: HttpClient) {}
 
+  getfullData(imdbID: string): Observable<MovieFullDataInterface | undefined> {
+    return this.http.get<MovieFullDataInterface | undefined>(
+      `http://www.omdbapi.com/?apikey=5e826b4b&i=${imdbID}`
+    );
+  }
+
   getData(): Observable<OMDbAPIResponseInterface | undefined> {
     return this.http.get<OMDbAPIResponseInterface | undefined>(
-      `${url}&s=$game`
+      `http://www.omdbapi.com/?apikey=5e826b4b&i=tt2084970`
     );
   }
 

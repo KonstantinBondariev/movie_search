@@ -12,11 +12,12 @@ export class MoviesComponent implements OnInit {
   constructor(private mss: MovieSearchService) {}
 
   @Input() movies: MovieInterface[] | undefined;
+  cureantImdbID?: string;
 
   ngOnInit(): void {
     this.mss.getData().subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
-        this.movies = res?.Search;
+        console.log(res);
       },
     });
   }
