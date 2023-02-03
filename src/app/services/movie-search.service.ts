@@ -11,6 +11,7 @@ const url = 'https://www.omdbapi.com/?apikey=5e826b4b';
   providedIn: 'root',
 })
 export class MovieSearchService {
+  cureantID?: string;
   constructor(private http: HttpClient) {}
 
   getfullData(imdbID: string): Observable<MovieFullDataInterface | undefined> {
