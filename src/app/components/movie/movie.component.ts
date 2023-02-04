@@ -6,6 +6,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-interface';
 
@@ -17,7 +19,12 @@ import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-int
 export class MovieComponent implements OnInit, OnChanges {
   @Input() cureantImdbId?: any;
   movie?: MovieFullDataInterface;
-  constructor(private mss: MovieSearchService, private route: ActivatedRoute) {}
+
+  constructor(
+    private mss: MovieSearchService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -38,5 +45,9 @@ export class MovieComponent implements OnInit, OnChanges {
         console.log(this.movie);
       },
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

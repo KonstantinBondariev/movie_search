@@ -1,0 +1,11 @@
+.container {
+  display: block;
+  position: absolute;
+  padding: 10px;
+  background-color: gray;
+  width: 30%;
+  height: 40%;
+  & img {
+    height: 60%;
+  }
+}

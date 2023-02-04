@@ -1,16 +1,22 @@
 <div class="movies">
-  <a *ngFor="let movie of movies" routerLink="/movie/{{movie.imdbID}}" (click)="cureantImdbID=movie.imdbID"
+  <a *ngFor="let movie of movies" routerLink="/movie/{{movie.imdbID}}" (click)="cureantImdbID=movie.imdbID; leave()"
     class="movie">
     <div class="movie__poster poster">
-      <img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseover)="enter($event.target)" (mouseleave)="leave()">
-      <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
+      <img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseover)="enter($event)" (mouseleave)="leave()">
+      <!-- <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
       </div>
       <ng-template #thenBlock><img ngSrc="img/film.png" alt="movie"></ng-template>
-      <ng-template #elseBlock><img ngSrc="./app/components/movies/img/series.png" alt="series"></ng-template>
+      <ng-template #elseBlock><img ngSrc="./app/components/movies/img/series.png" alt="series"></ng-template> -->
     </div>
     <div class="movie__title">
       {{movie.Title}}{{movie.Year}}
     </div>
   </a>
 </div>
-<app-dialog></app-dialog>
+
+
+
+<ng-template [ngIf]="onHover">
+  <app-popup-window></app-popup-window>
+</ng-template>
+<!-- <app-dialog></app-dialog> -->

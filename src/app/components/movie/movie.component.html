@@ -1,4 +1,3 @@
-<h2>123</h2>
 <ng-template [ngIf]="movie">
   <div class="movie">
     <h2 class="movie__title">{{movie.Title}}</h2>
@@ -27,4 +26,5 @@
       Genre: {{movie.Genre}}
     </div>
   </div>
+  <button (click)="goBack()">Go back</button>
 </ng-template>

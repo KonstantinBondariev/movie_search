@@ -1,0 +1,11 @@
+<div [ngStyle]="setMyStyles()" class="container">
+  <h2>{{movie?.Title}}</h2>
+  <div>
+    <div>{{movie?.Director}}</div>
+    <div>{{movie?.Country}}</div>
+    <div>{{movie?.Genre}}</div>
+    <div>{{movie?.Language}}</div>
+    <div>{{movie?.Ratings | json}}</div>
+  </div>
+  <div>Imdb rating: {{movie?.imdbRating}}</div>
+</div>

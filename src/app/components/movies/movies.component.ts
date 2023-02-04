@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { CureantPositionService } from 'src/app/services/cureant-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -16,12 +18,13 @@ export class MoviesComponent implements OnInit {
   do?: any;
   onHoverId?: string;
 
-  constructor(private mss: MovieSearchService, private dialog: MatDialog) {}
+  constructor(
+    private mss: MovieSearchService,
+    private dialog: MatDialog,
+    private cureantPositionService: CureantPositionService
+  ) {}
 
   ngOnInit(): void {}
-  myAlert(value: any): void {
-    alert(value);
-  }
 
   openDialog() {
     this.dialog.open(DialogComponent, {
@@ -29,17 +32,36 @@ export class MoviesComponent implements OnInit {
     });
   }
 
+  // leave() {
+  //   clearTimeout(this.do);
+  //   this.onHover = false;
+  // }
+
   leave() {
-    clearTimeout(this.do);
-    this.onHover = false;
+    setTimeout(() => {
+      clearTimeout(this.do);
+      this.onHover = false;
+    }, 500);
   }
 
-  enter(target: any) {
+  enter(event: MouseEvent) {
     this.do = setTimeout(() => {
       this.onHover = true;
-      if (target) this.mss.cureantID = target.alt;
-
-      this.openDialog();
+      if (event) {
+        const img: any = event.target;
+        this.cureantPositionService.posX = event.pageX;
+        this.cureantPositionService.posY = event.pageY;
+        img ? (this.mss.cureantID = img.alt) : null;
+      }
     }, 1500);
   }
+
+  // enter(target: any) {
+  //   this.do = setTimeout(() => {
+  //     this.onHover = true;
+  //     if (target) this.mss.cureantID = target.alt;
+
+  //     // this.openDialog();
+  //   }, 1500);
+  // }
 }

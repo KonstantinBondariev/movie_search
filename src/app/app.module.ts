@@ -10,6 +10,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { PopupWindowComponent } from './components/popup-window/popup-window.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     SearchComponent,
     MovieComponent,
     DialogComponent,
+    PopupWindowComponent,
   ],
   imports: [
     BrowserModule,

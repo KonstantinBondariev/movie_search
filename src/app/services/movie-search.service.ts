@@ -16,13 +16,13 @@ export class MovieSearchService {
 
   getfullData(imdbID: string): Observable<MovieFullDataInterface | undefined> {
     return this.http.get<MovieFullDataInterface | undefined>(
-      `http://www.omdbapi.com/?apikey=5e826b4b&i=${imdbID}`
+      `https://www.omdbapi.com/?apikey=5e826b4b&i=${imdbID}`
     );
   }
 
   getData(): Observable<OMDbAPIResponseInterface | undefined> {
     return this.http.get<OMDbAPIResponseInterface | undefined>(
-      `http://www.omdbapi.com/?apikey=5e826b4b&i=tt2084970`
+      `https://www.omdbapi.com/?apikey=5e826b4b&i=tt2084970`
     );
   }
 
