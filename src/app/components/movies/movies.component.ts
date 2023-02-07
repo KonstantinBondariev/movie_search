@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CureantPositionService } from 'src/app/services/cureant-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
-import { DialogComponent } from '../dialog/dialog.component';
+import { debounce } from 'lodash';
 
 @Component({
   selector: 'app-movies',
@@ -20,28 +20,30 @@ export class MoviesComponent implements OnInit {
 
   constructor(
     private mss: MovieSearchService,
-    private dialog: MatDialog,
     private cureantPositionService: CureantPositionService
-  ) {}
+  ) {
+    this.setPosition = debounce(this.setPosition, 50);
+  }
 
   ngOnInit(): void {}
 
-  openDialog() {
-    this.dialog.open(DialogComponent, {
-      width: '30%',
-    });
+  leave() {
+    // setTimeout(() => {
+    clearTimeout(this.do);
+    this.onHover = false;
+    this.mss.cureantID = null;
+    // }, 100);
   }
 
-  // leave() {
-  //   clearTimeout(this.do);
-  //   this.onHover = false;
-  // }
+  setPosition(event: MouseEvent): void {
+    this.cureantPositionService.posY = event.pageY;
 
-  leave() {
-    setTimeout(() => {
-      clearTimeout(this.do);
-      this.onHover = false;
-    }, 500);
+    if (event.pageX <= (2 * window.outerWidth) / 3) {
+      this.cureantPositionService.posX = event.pageX + 50;
+    } else {
+      this.cureantPositionService.posX =
+        event.pageX - 50 - window.outerWidth / 3;
+    }
   }
 
   enter(event: MouseEvent) {
@@ -49,19 +51,9 @@ export class MoviesComponent implements OnInit {
       this.onHover = true;
       if (event) {
         const img: any = event.target;
-        this.cureantPositionService.posX = event.pageX;
-        this.cureantPositionService.posY = event.pageY;
+
         img ? (this.mss.cureantID = img.alt) : null;
       }
-    }, 1500);
+    }, 1000);
   }
-
-  // enter(target: any) {
-  //   this.do = setTimeout(() => {
-  //     this.onHover = true;
-  //     if (target) this.mss.cureantID = target.alt;
-
-  //     // this.openDialog();
-  //   }, 1500);
-  // }
 }

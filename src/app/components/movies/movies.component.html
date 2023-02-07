@@ -1,8 +1,10 @@
+<p>movies work</p>
 <div class="movies">
   <a *ngFor="let movie of movies" routerLink="/movie/{{movie.imdbID}}" (click)="cureantImdbID=movie.imdbID; leave()"
     class="movie">
     <div class="movie__poster poster">
-      <img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseover)="enter($event)" (mouseleave)="leave()">
+      <img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseenter)="enter($event)" (mouseenter)="setPosition($event)"
+        (mouseleave)="leave()">
       <!-- <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
       </div>
       <ng-template #thenBlock><img ngSrc="img/film.png" alt="movie"></ng-template>
@@ -14,9 +16,6 @@
   </a>
 </div>
 
-
-
 <ng-template [ngIf]="onHover">
   <app-popup-window></app-popup-window>
 </ng-template>
-<!-- <app-dialog></app-dialog> -->

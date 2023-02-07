@@ -1,6 +1,7 @@
 <div>
   <label for="title-search">Enter movie title</label>
-  <input #titleSearch type="text" id="title-search" placeholder="title" (input)="movieTitle=titleSearch.value">
+  <input (keydown)="movieSearch(movieTitle, movieYear)" #titleSearch type="text" id="title-search" placeholder="title"
+    (input)="movieTitle=titleSearch.value">
 
   <label for="year-search">Choose movie year</label>
   <input #yearSearch type="number" id="year-search" (input)="movieYear=yearSearch.value">

@@ -1,12 +1,20 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
 .movies {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   position: relative;
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .movie {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  &__title {
+    background-color: $color-gray;
+  }
 }

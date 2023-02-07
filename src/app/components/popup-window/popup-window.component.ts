@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CureantPositionService } from 'src/app/services/cureant-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-interface';
@@ -9,7 +9,7 @@ import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-int
   styleUrls: ['./popup-window.component.scss'],
 })
 export class PopupWindowComponent implements OnInit {
-  movie?: MovieFullDataInterface;
+  movie?: MovieFullDataInterface | null;
 
   constructor(
     private mss: MovieSearchService,
@@ -21,10 +21,10 @@ export class PopupWindowComponent implements OnInit {
       this.mss.getfullData(this.mss.cureantID).subscribe({
         next: (res: MovieFullDataInterface | undefined) => {
           this.movie = res;
-          console.log(this.movie);
         },
       });
     }
+    if (this.mss.cureantID == null) this.movie = null;
   }
 
   setMyStyles() {

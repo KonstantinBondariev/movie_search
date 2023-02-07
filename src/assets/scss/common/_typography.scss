@@ -1,8 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-@use "assets/scss/mixins/" as *;
-@use "assets/scss/presets/" as *;
-@use "assets/scss/common/classes";
-
+@use "../presets/" as *;
+@use "../mixins/" as *;
 *,
 *::after,
 *::before {

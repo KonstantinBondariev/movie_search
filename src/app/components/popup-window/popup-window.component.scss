@@ -5,7 +5,8 @@
   background-color: gray;
   width: 30%;
   height: 40%;
-  & img {
-    height: 60%;
-  }
+  transition: all 0.5s;
+}
+.title {
+  transition: all 0.5s;
 }
