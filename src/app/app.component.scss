@@ -2,10 +2,17 @@
 
 .container {
   max-width: 1280px;
-  margin: 20 auto;
-  text-align: center;
-}
+  margin: 20px;
 
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  order: 3;
+}
+.title {
+  order: 2;
+}
 .nav {
-  background-color: $color-gray;
+  order: -1;
 }

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../node_modules/normalize.css/normalize.css";
 @use "assets/scss/mixins/" as *;
 @use "assets/scss/presets/" as *;
 @use "assets/scss/common/classes";
@@ -90,5 +91,9 @@ h3 {
 a {
   text-decoration: none;
 
-  color: $color-light;
+  color: $color-primary;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
 }

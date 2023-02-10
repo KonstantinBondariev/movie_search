@@ -20,7 +20,7 @@ export class PaginatorComponent implements OnInit {
 
   setCurrentDisplayPages(): void {
     this.currentPage <= 5
-      ? (this.currentDisplayPages = this.totalpages.slice(0, 11))
+      ? (this.currentDisplayPages = this.totalpages.slice(0, 10))
       : this.currentPage < this.totalpages.length - 5
       ? (this.currentDisplayPages = this.totalpages.slice(
           this.currentPage - 5,

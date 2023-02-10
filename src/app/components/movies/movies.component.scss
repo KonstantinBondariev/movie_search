@@ -1,9 +1,10 @@
 @use "../../../assets/scss/mixins/" as *;
 @use "../../../assets/scss/presets/" as *;
 .movies {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: $gap-lg;
   position: relative;
   @include lg {
     grid-template-columns: 1fr 1fr;
@@ -14,7 +15,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: $color-gray-light;
   &__title {
     background-color: $color-gray;
+  }
+
+  .poster {
+    position: relative;
+
+    &__icon {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }

@@ -28,6 +28,8 @@ export class RandomMoviesComponent implements OnInit {
         this.mss.searchMovie(title, '', 1).subscribe({
           next: (res) => {
             if (res) {
+              console.log(res);
+
               this.randomMovies.push(res?.Search[0]);
             }
           },

@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
+    "normalize.css": "^8.0.1",
     "random-words": "^1.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

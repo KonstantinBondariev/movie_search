@@ -14,6 +14,7 @@ import { PopupWindowComponent } from './components/popup-window/popup-window.com
 import { RandomMoviesComponent } from './components/random-movies/random-movies.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { PageComponent } from './components/page/page.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PageComponent } from './components/page/page.component';
     RandomMoviesComponent,
     PaginatorComponent,
     PageComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,21 @@
-<p>movies work</p>
 <div class="movies">
   <a *ngFor="let movie of movies" routerLink="/movie/{{movie.imdbID}}" (click)="cureantImdbID=movie.imdbID; leave()"
     class="movie">
+
     <div class="movie__poster poster">
-      <img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseenter)="enter($event)" (mouseenter)="setPosition($event)"
-        (mouseleave)="leave()">
-      <!-- <div *ngIf="movie.Type == 'movie'; then thenBlock else elseBlock">
+      <div *ngIf="movie.Poster !== 'N/A'; then thenBlock1 else elseBlock1"></div>
+      <ng-template #thenBlock1><img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseenter)="enter($event)"
+          (mouseenter)="setPosition($event)" (mouseleave)="leave()"></ng-template>
+      <ng-template #elseBlock1><img src="../../../assets/img/no-pictures.png" alt="{{movie.imdbID}}"
+          (mouseenter)="enter($event)" (mouseenter)="setPosition($event)" (mouseleave)="leave()"></ng-template>
+
+      <div *ngIf="movie.Type == 'movie'; then thenBlock2 else elseBlock2">
       </div>
-      <ng-template #thenBlock><img ngSrc="img/film.png" alt="movie"></ng-template>
-      <ng-template #elseBlock><img ngSrc="./app/components/movies/img/series.png" alt="series"></ng-template> -->
+      <ng-template #thenBlock2><img class="poster__icon" src="../../../assets/img/film.png" alt="movie"></ng-template>
+      <ng-template #elseBlock2><img class="poster__icon" src="../../../assets/img/series.png" alt="series">
+      </ng-template>
     </div>
+
     <div class="movie__title">
       {{movie.Title}}{{movie.Year}}
     </div>

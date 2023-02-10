@@ -1,8 +1,14 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+
 .container {
-  display: block;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   padding: 10px;
-  background-color: gray;
+  background-color: $color-gray-light;
   width: 30%;
   height: 40%;
   transition: all 0.5s;

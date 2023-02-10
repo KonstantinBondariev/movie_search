@@ -1,0 +1,16 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+
+.container {
+  height: calc(100vh - 142px);
+  background-color: $color-gray-light;
+}
+
+.movie {
+  width: 100%;
+  display: flex;
+}
+
+.reitings__list {
+  @include unlist;
+}

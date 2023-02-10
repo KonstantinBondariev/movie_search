@@ -1,16 +1,22 @@
 <div [ngStyle]="setMyStyles()" class="container">
-  <div *ngIf="!movie; else elseBlock">
+  <div *ngIf="!movie; else elseBlock" class="content">
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #elseBlock>
+
     <div>
-      <div>{{movie?.Director}}</div>
-      <div>{{movie?.Country}}</div>
-      <div>{{movie?.Genre}}</div>
-      <div>{{movie?.Language}}</div>
-      <div>{{movie?.Ratings | json}}</div>
+      <div class="movie__title">
+        <h4 class="title">{{movie?.Title}}</h4>
+      </div>
+      <div class="movie__info">
+        <div>{{movie?.Director}}</div>
+        <div>{{movie?.Country}}</div>
+        <div>{{movie?.Genre}}</div>
+        <div>{{movie?.Language}}</div>
+        <div>{{movie?.Ratings | json}}</div>
+      </div>
+      <div class="movie__imdb-rating">Imdb rating: {{movie?.imdbRating}}</div>
     </div>
-    <div>Imdb rating: {{movie?.imdbRating}}</div>
   </ng-template>
-  <h2 class="title">{{movie?.Title}}</h2>
+
 </div>
