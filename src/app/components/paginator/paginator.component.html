@@ -1,0 +1,10 @@
+<p>paginator works!</p>
+
+<div>
+  <ul class="paginator-list">
+    <li *ngFor="let page of currentDisplayPages">
+      <a class="page-index" (click)="setCurrentPos($event); setCurrentDisplayPages()"
+        routerLink="/page/{{page+1}}">{{page+1}}</a>
+    </li>
+  </ul>
+</div>

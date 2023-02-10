@@ -10,5 +10,7 @@
 <div>
   <button (click)="movieSearch(movieTitle, movieYear)">Search</button>
 </div>
+<ng-template [ngIf]="movies">
+  <app-page [movies]="movies"></app-page>
 
-<app-movies [movies]="movies"></app-movies>
+</ng-template>

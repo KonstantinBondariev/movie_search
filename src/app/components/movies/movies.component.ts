@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { CureantPositionService } from 'src/app/services/cureant-position.service';
+import { CureantPositionService } from 'src/app/services/current-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { debounce } from 'lodash';
@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
 
   constructor(
     private mss: MovieSearchService,
-    private cureantPositionService: CureantPositionService
+    private currentPositionService: CureantPositionService
   ) {
     this.setPosition = debounce(this.setPosition, 50);
   }
@@ -31,17 +31,17 @@ export class MoviesComponent implements OnInit {
     // setTimeout(() => {
     clearTimeout(this.do);
     this.onHover = false;
-    this.mss.cureantID = null;
+    this.mss.currentID = null;
     // }, 100);
   }
 
   setPosition(event: MouseEvent): void {
-    this.cureantPositionService.posY = event.pageY;
+    this.currentPositionService.posY = event.pageY;
 
     if (event.pageX <= (2 * window.outerWidth) / 3) {
-      this.cureantPositionService.posX = event.pageX + 50;
+      this.currentPositionService.posX = event.pageX + 50;
     } else {
-      this.cureantPositionService.posX =
+      this.currentPositionService.posX =
         event.pageX - 50 - window.outerWidth / 3;
     }
   }
@@ -52,7 +52,7 @@ export class MoviesComponent implements OnInit {
       if (event) {
         const img: any = event.target;
 
-        img ? (this.mss.cureantID = img.alt) : null;
+        img ? (this.mss.currentID = img.alt) : null;
       }
     }, 1000);
   }

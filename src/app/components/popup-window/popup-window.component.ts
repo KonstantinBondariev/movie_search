@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CureantPositionService } from 'src/app/services/cureant-position.service';
+import { CureantPositionService } from 'src/app/services/current-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-interface';
 
@@ -13,26 +13,26 @@ export class PopupWindowComponent implements OnInit {
 
   constructor(
     private mss: MovieSearchService,
-    private cureantPositionService: CureantPositionService
+    private currentPositionService: CureantPositionService
   ) {}
 
   ngOnInit(): void {
-    if (this.mss.cureantID) {
-      this.mss.getfullData(this.mss.cureantID).subscribe({
+    if (this.mss.currentID) {
+      this.mss.getfullData(this.mss.currentID).subscribe({
         next: (res: MovieFullDataInterface | undefined) => {
           this.movie = res;
         },
       });
     }
-    if (this.mss.cureantID == null) this.movie = null;
+    if (this.mss.currentID == null) this.movie = null;
   }
 
   setMyStyles() {
     let styles;
-    if (this.cureantPositionService.posX && this.cureantPositionService.posY) {
+    if (this.currentPositionService.posX && this.currentPositionService.posY) {
       styles = {
-        left: this.cureantPositionService.posX + 'px',
-        top: this.cureantPositionService.posY + 'px',
+        left: this.currentPositionService.posX + 'px',
+        top: this.currentPositionService.posY + 'px',
       };
     }
 

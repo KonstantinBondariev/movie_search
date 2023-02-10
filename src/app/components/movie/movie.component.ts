@@ -17,7 +17,7 @@ import { MovieFullDataInterface } from 'src/app/shared/types/movie-full-data-int
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent implements OnInit, OnChanges {
-  @Input() cureantImdbId?: any;
+  @Input() currentImdbId?: string | undefined;
   movie?: MovieFullDataInterface;
 
   constructor(
@@ -39,12 +39,13 @@ export class MovieComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.mss.getfullData(this.cureantImdbId).subscribe({
-      next: (res: MovieFullDataInterface | undefined) => {
-        this.movie = res;
-        console.log(this.movie);
-      },
-    });
+    if (this.currentImdbId)
+      this.mss.getfullData(this.currentImdbId).subscribe({
+        next: (res: MovieFullDataInterface | undefined) => {
+          this.movie = res;
+          console.log(this.movie);
+        },
+      });
   }
 
   goBack(): void {

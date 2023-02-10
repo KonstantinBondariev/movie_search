@@ -1,0 +1,9 @@
+@use "../../../assets/scss/mixins/" as *;
+.paginator-list {
+  display: flex;
+  justify-content: center;
+  @include unlist;
+  & a {
+    color: black;
+  }
+}

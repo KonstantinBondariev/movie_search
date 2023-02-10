@@ -12,6 +12,8 @@ import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { PopupWindowComponent } from './components/popup-window/popup-window.component';
 import { RandomMoviesComponent } from './components/random-movies/random-movies.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { PageComponent } from './components/page/page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RandomMoviesComponent } from './components/random-movies/random-movies.
     MovieComponent,
     PopupWindowComponent,
     RandomMoviesComponent,
+    PaginatorComponent,
+    PageComponent,
   ],
   imports: [
     BrowserModule,

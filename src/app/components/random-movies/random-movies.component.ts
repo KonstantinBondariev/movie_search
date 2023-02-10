@@ -20,16 +20,23 @@ export class RandomMoviesComponent implements OnInit {
   }
 
   getRandomMovies() {
-    this.randomMovies = [];
-    let randomTitlesArr = randomWords(10);
-    randomTitlesArr.forEach(async (title) => {
-      this.mss.searchMovie(title, '').subscribe({
-        next: (res) => {
-          if (res) {
-            this.randomMovies.push(res?.Search[0]);
-          }
-        },
+    console.log(this.randomMovies);
+
+    if (this.randomMovies.length == 0) {
+      let randomTitlesArr = randomWords(10);
+      randomTitlesArr.forEach(async (title) => {
+        this.mss.searchMovie(title, '', 1).subscribe({
+          next: (res) => {
+            if (res) {
+              this.randomMovies.push(res?.Search[0]);
+            }
+          },
+        });
       });
-    });
+    }
+  }
+
+  clearMovies(): void {
+    this.randomMovies = [];
   }
 }
