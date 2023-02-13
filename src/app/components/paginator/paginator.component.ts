@@ -43,9 +43,8 @@ export class PaginatorComponent implements OnInit {
   setCurrentPos(e: any) {
     if (e) {
       this.currentPage = +e.target.innerText;
-      console.log('current page', this.currentPage);
-
       this.mss.curreantPage = e.target.innerText;
+      console.log('current page', this.currentPage, this.mss.curreantPage);
     }
   }
 }

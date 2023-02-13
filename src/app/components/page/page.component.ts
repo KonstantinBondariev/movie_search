@@ -30,7 +30,7 @@ export class PageComponent implements OnInit {
     this.movieSearchService.currentYear = year;
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
-        console.log(res);
+        console.log('res in page', res);
 
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;

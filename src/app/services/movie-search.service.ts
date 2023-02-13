@@ -36,6 +36,8 @@ export class MovieSearchService {
     year: string,
     page: any = this.curreantPage
   ): Observable<OMDbAPIResponseInterface | undefined> {
+    console.log('page in service', title, year, page);
+
     return this.http.get<OMDbAPIResponseInterface | undefined>(
       `${url}&s=${title}&y=${year}&page=${page}`
     );

@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CureantPositionService } from 'src/app/services/current-position.service';
@@ -11,7 +18,7 @@ import { debounce } from 'lodash';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnChanges {
   @Input() movies: MovieInterface[] | undefined;
   cureantImdbID?: string;
   onHover: boolean = false;
@@ -26,6 +33,10 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes', changes);
+  }
 
   leave() {
     // setTimeout(() => {
