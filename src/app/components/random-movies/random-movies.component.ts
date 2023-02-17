@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import randomWords from 'random-words';
-import { map } from 'rxjs';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
-import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
 
 @Component({
   selector: 'app-random-movies',

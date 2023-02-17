@@ -33,7 +33,7 @@ export class MoviesComponent implements OnInit, OnChanges {
 
   cureantImdbID?: string;
   onHover: boolean = false;
-  do?: any;
+  do?: NodeJS.Timeout;
   onHoverId?: string;
 
   constructor(
@@ -45,14 +45,12 @@ export class MoviesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void {} // delete
 
   leave() {
-    // setTimeout(() => {
     clearTimeout(this.do);
     this.onHover = false;
     this.mss.currentID = null;
-    // }, 100);
   }
 
   setPosition(event: MouseEvent): void {
@@ -71,7 +69,6 @@ export class MoviesComponent implements OnInit, OnChanges {
       this.onHover = true;
       if (event) {
         const img: any = event.target;
-
         img ? (this.mss.currentID = img.alt) : null;
       }
     }, 1000);

@@ -9,13 +9,19 @@
         <app-rating [imdbRating]="movie?.imdbRating"></app-rating>
       </div>
       <div class="movie__info">
-        <div><b>Director:</b>{{movie?.Director}}</div>
-        <div><b>Country:</b>{{movie?.Country}}</div>
-        <div><b>Genre</b>{{movie?.Genre}}</div>
-        <div><b>Language</b>{{movie?.Language}}</div>
-        <div><b></b>{{movie?.Ratings | json}}</div>
+        <div><b>Genre: </b>{{movie?.Genre}}</div>
+        <div><b>Director: </b>{{movie?.Director}}</div>
+        <div><b>Country: </b>{{movie?.Country}}</div>
+        <div><b>Language: </b>{{movie?.Language}}</div>
+        <div><b>Ratings: </b>
+          <span>
+            <div *ngFor="let source of movie?.Ratings">{{source.Source}}:
+              <b>{{source.Value}}</b>
+            </div>
+          </span>
+        </div>
       </div>
-      <div class="movie__imdb-rating">Imdb rating: {{movie?.imdbRating}}</div>
+      <div class="movie__imdb-rating">Imdb rating: <b>{{movie?.imdbRating}}</b></div>
     </div>
   </ng-template>
 

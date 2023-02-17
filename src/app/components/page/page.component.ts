@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
+import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
 
 @Component({
@@ -9,15 +10,14 @@ import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-  movies: any;
+  movies?: MovieInterface[];
   constructor(
     private route: ActivatedRoute,
     private movieSearchService: MovieSearchService
   ) {
     route.params.subscribe((params) => {
       if (params['id'] && this.movieSearchService.currentTitle) {
-        console.log('000', params['id']);
-        this.movieSearch(
+        this.getData(
           this.movieSearchService.currentTitle,
           this.movieSearchService.currentYear
         );
@@ -31,20 +31,15 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  movieSearch(title: string, year: string): void {
+  setCurrentPropertiesInMovieSearchService(title: string, year: string): void {
     this.movieSearchService.currentTitle = title;
     this.movieSearchService.currentYear = year;
+  }
+
+  getData(title: string, year: string): void {
+    this.setCurrentPropertiesInMovieSearchService(title, year);
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
-        console.log(
-          'title:',
-          this.movieSearchService.currentTitle,
-          'page:',
-          this.movieSearchService.curreantPage,
-          'first movie',
-          res?.Search[0].imdbID
-        );
-
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;
       },

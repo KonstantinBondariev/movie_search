@@ -17,9 +17,7 @@ export class RatingComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('rating', this.imdbRating, this.imdbNumRating);
-  }
+  ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {
     if (this.imdbRating) this.imdbNumRating = Math.round(+this.imdbRating);
   }

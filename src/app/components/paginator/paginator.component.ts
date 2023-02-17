@@ -7,8 +7,8 @@ import { MovieSearchService } from 'src/app/services/movie-search.service';
   styleUrls: ['./paginator.component.scss'],
 })
 export class PaginatorComponent implements OnInit {
-  totalpages: any[] = [];
-  currentDisplayPages!: any[];
+  totalpages: number[] = [];
+  currentDisplayPages!: number[];
   currentPage!: number;
   constructor(private mss: MovieSearchService) {}
 
@@ -30,19 +30,9 @@ export class PaginatorComponent implements OnInit {
         this.currentPage <= this.totalpages.length
       ? (this.currentDisplayPages = this.totalpages.slice(-10))
       : null;
-    console.log(
-      'total pages: ',
-      this.totalpages,
-      'mss totalres',
-      this.mss.totalResult
-    );
-    console.log('current pages: ', this.currentDisplayPages);
   }
 
-  changeCurrentDisplayPages(): void {}
-
   setTotalPages(): void {
-    // *ngFor loop number
     if (this.mss.totalResult) {
       for (let index = 0; index <= +this.mss.totalResult / 10; index++) {
         this.totalpages.push(index);

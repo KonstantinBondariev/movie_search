@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit, OnChanges {
   movieTitle: string = '';
   movieYear: string = '';
   movies?: MovieInterface[]; // nujen??
-  currentPage: any = this.movieSearchService.curreantPage;
+  currentPage: number = this.movieSearchService.curreantPage;
 
   constructor(
     private movieSearchService: MovieSearchService,
@@ -22,13 +22,7 @@ export class SearchComponent implements OnInit, OnChanges {
     this.movieSearch = debounce(this.movieSearch, 50);
   }
 
-  ngOnInit(): void {
-    console.log(
-      this.movieTitle,
-      'kfkfkfkfk44494949',
-      this.movieSearchService.currentTitle
-    );
-  }
+  ngOnInit(): void {}
 
   // ??????
   ngOnChanges(changes: SimpleChanges): void {

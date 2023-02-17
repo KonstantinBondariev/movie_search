@@ -17,14 +17,15 @@ export class PopupWindowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.mss.currentID) {
-      this.mss.getfullData(this.mss.currentID).subscribe({
-        next: (res: MovieFullDataInterface | undefined) => {
-          this.movie = res;
-        },
-      });
-    }
-    if (this.mss.currentID == null) this.movie = null;
+    this.mss.currentID ? this.getData(this.mss.currentID) : (this.movie = null);
+  }
+
+  getData(imdbID: string): void {
+    this.mss.getfullData(imdbID).subscribe({
+      next: (res: MovieFullDataInterface | undefined) => {
+        this.movie = res;
+      },
+    });
   }
 
   setMyStyles() {
@@ -35,7 +36,6 @@ export class PopupWindowComponent implements OnInit {
         top: this.currentPositionService.posY + 'px',
       };
     }
-
     return styles;
   }
 }

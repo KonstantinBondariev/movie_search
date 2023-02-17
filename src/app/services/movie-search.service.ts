@@ -15,7 +15,7 @@ export class MovieSearchService {
   currentTitle: string | null = null;
   currentYear: string = '';
   totalResult: string | null | undefined = null;
-  curreantPage: any = 1;
+  curreantPage: number = 1;
   currentMovies!: MovieInterface[] | undefined;
 
   constructor(private http: HttpClient) {}

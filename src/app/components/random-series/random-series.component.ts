@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import randomWords from 'random-words';
-import { map } from 'rxjs';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
-import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
 
 @Component({
   selector: 'app-random-series',
@@ -11,7 +9,7 @@ import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response
   styleUrls: ['./random-series.component.scss'],
 })
 export class RandomSeriesComponent implements OnInit {
-  movies: MovieInterface[] = [];
+  series: MovieInterface[] = [];
 
   constructor(private mss: MovieSearchService) {}
 
@@ -20,13 +18,13 @@ export class RandomSeriesComponent implements OnInit {
   }
 
   getRandomMovies(type: string) {
-    if (this.movies.length == 0) {
+    if (this.series.length == 0) {
       let randomTitlesArr = randomWords(10);
       randomTitlesArr.forEach((title) => {
         this.mss.searchMovie(title, '', 1, type).subscribe({
           next: (res) => {
             if (res) {
-              this.movies.push(res?.Search[0]);
+              this.series.push(res?.Search[0]);
             }
           },
         });
@@ -35,6 +33,6 @@ export class RandomSeriesComponent implements OnInit {
   }
 
   clearMovies(): void {
-    this.movies = [];
+    this.series = [];
   }
 }
