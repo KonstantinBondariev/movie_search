@@ -12,20 +12,27 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchComponent implements OnInit, OnChanges {
   movieTitle: string = '';
   movieYear: string = '';
-  movies?: MovieInterface[];
+  movies?: MovieInterface[]; // nujen??
   currentPage: any = this.movieSearchService.curreantPage;
 
   constructor(
     private movieSearchService: MovieSearchService,
     private route: ActivatedRoute
   ) {
-    this.movieSearch = debounce(this.movieSearch, 500);
+    this.movieSearch = debounce(this.movieSearch, 50);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(
+      this.movieTitle,
+      'kfkfkfkfk44494949',
+      this.movieSearchService.currentTitle
+    );
+  }
 
+  // ??????
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes');
+    console.log(changes);
 
     let page = this.route.snapshot.paramMap.get('id');
     if (page && this.movieSearchService.currentTitle)
@@ -36,15 +43,15 @@ export class SearchComponent implements OnInit, OnChanges {
   }
 
   movieSearch(title: string, year: string): void {
+    if (title.length < 3) return;
     this.movieSearchService.currentTitle = title;
     this.movieSearchService.currentYear = year;
     this.movieSearchService.curreantPage = 1;
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
-        console.log(res);
-
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;
+        this.movieSearchService.currentMovies = res?.Search;
       },
     });
   }

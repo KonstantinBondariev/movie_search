@@ -15,6 +15,9 @@ import { RandomMoviesComponent } from './components/random-movies/random-movies.
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { PageComponent } from './components/page/page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { RandomSeriesComponent } from './components/random-series/random-series.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     PaginatorComponent,
     PageComponent,
     NavigationComponent,
+    RandomSeriesComponent,
+    RatingComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

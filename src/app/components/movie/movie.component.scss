@@ -1,16 +1,35 @@
 @use "../../../assets/scss/mixins/" as *;
 @use "../../../assets/scss/presets/" as *;
 
+tr :last-child {
+  padding-left: 20px;
+}
+
 .container {
-  height: calc(100vh - 142px);
+  padding: 20px;
   background-color: $color-gray-light;
 }
 
 .movie {
   width: 100%;
   display: flex;
-}
-
-.reitings__list {
-  @include unlist;
+  flex-direction: column;
+  &__about {
+    display: flex;
+  }
+  &__info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  &__trailer {
+    margin-top: 20px;
+    text-align: center;
+  }
 }

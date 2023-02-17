@@ -16,6 +16,7 @@ export class MovieSearchService {
   currentYear: string = '';
   totalResult: string | null | undefined = null;
   curreantPage: any = 1;
+  currentMovies!: MovieInterface[] | undefined;
 
   constructor(private http: HttpClient) {}
 
@@ -34,12 +35,13 @@ export class MovieSearchService {
   searchMovie(
     title: string,
     year: string,
-    page: any = this.curreantPage
+    page: any = this.curreantPage,
+    type: string = ''
   ): Observable<OMDbAPIResponseInterface | undefined> {
     console.log('page in service', title, year, page);
 
     return this.http.get<OMDbAPIResponseInterface | undefined>(
-      `${url}&s=${title}&y=${year}&page=${page}`
+      `${url}&s=${title}&y=${year}&page=${page}&type=${type}`
     );
   }
 }

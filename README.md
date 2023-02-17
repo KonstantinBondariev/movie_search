@@ -1,6 +1,10 @@
 # MovieSearch
 
-npm firebase deploy: firebase deploy --only hosting
+Hosting URL: https://movie-search-a1028.web.app
+
+web service: https://www.omdbapi.com/
+
+firebase deploy: firebase deploy --only hosting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 

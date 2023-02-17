@@ -9,17 +9,23 @@ import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-  @Input() movies: any;
+  movies: any;
   constructor(
     private route: ActivatedRoute,
     private movieSearchService: MovieSearchService
   ) {
-    route.params.subscribe((id) => {
-      if (id && this.movieSearchService.currentTitle)
+    route.params.subscribe((params) => {
+      if (params['id'] && this.movieSearchService.currentTitle) {
+        console.log('000', params['id']);
         this.movieSearch(
           this.movieSearchService.currentTitle,
           this.movieSearchService.currentYear
         );
+      } else {
+        // nujen?
+        this.movies = this.movieSearchService.currentMovies;
+        console.log('@@@@');
+      }
     });
   }
 
@@ -30,7 +36,14 @@ export class PageComponent implements OnInit {
     this.movieSearchService.currentYear = year;
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
-        console.log('res in page', res);
+        console.log(
+          'title:',
+          this.movieSearchService.currentTitle,
+          'page:',
+          this.movieSearchService.curreantPage,
+          'first movie',
+          res?.Search[0].imdbID
+        );
 
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;

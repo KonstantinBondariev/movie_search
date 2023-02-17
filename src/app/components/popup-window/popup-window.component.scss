@@ -2,17 +2,21 @@
 @use "../../../assets/scss/presets/" as *;
 
 .container {
-  margin: 20px;
+  width: 286px;
+  height: 200px;
+  padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   padding: 10px;
   background-color: $color-gray-light;
-  width: 30%;
-  height: 40%;
   transition: all 0.5s;
 }
 .title {
   transition: all 0.5s;
+}
+
+.mat-spinner::ng-deep circle {
+  stroke: $color-accent;
 }

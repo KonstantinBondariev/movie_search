@@ -3,8 +3,9 @@
 <div>
   <ul class="paginator-list">
     <li *ngFor="let page of currentDisplayPages">
-      <a class="page-index" (click)="setCurrentPos($event); setCurrentDisplayPages()"
-        routerLink="/page/{{page+1}}">&nbsp;{{page+1}}&nbsp;</a>
+      <a [ngClass]="{'active': page == currentPage -1}" class="page-index"
+        (click)="setCurrentPos($event); setCurrentDisplayPages()"
+        routerLink="/search/page/{{page+1}}">&nbsp;{{page+1}}&nbsp;</a>
     </li>
   </ul>
 </div>

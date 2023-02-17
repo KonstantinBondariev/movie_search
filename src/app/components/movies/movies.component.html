@@ -4,10 +4,16 @@
 
     <div class="movie__poster poster">
       <div *ngIf="movie.Poster !== 'N/A'; then thenBlock1 else elseBlock1"></div>
-      <ng-template #thenBlock1><img src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseenter)="enter($event)"
-          (mouseenter)="setPosition($event)" (mouseleave)="leave()"></ng-template>
-      <ng-template #elseBlock1><img src="../../../assets/img/no-pictures.png" alt="{{movie.imdbID}}"
-          (mouseenter)="enter($event)" (mouseenter)="setPosition($event)" (mouseleave)="leave()"></ng-template>
+
+      <ng-template #thenBlock1>
+        <img class="poster__img" src="{{movie.Poster}}" alt="{{movie.imdbID}}" (mouseenter)="enter($event)"
+          (mouseenter)="setPosition($event)" (mouseleave)="leave()">
+      </ng-template>
+
+      <ng-template #elseBlock1>
+        <img src="../../../assets/img/no-pictures.png" alt="{{movie.imdbID}}" (mouseenter)="enter($event)"
+          (mouseenter)="setPosition($event)" (mouseleave)="leave()">
+      </ng-template>
 
       <div *ngIf="movie.Type == 'movie'; then thenBlock2 else elseBlock2">
       </div>
@@ -17,12 +23,12 @@
     </div>
 
     <div class="movie__title">
-      {{movie.Title}}{{movie.Year}}
+      <h4>{{movie.Title}}. {{movie.Year}}</h4>
+
     </div>
   </a>
 </div>
 
-
 <ng-template [ngIf]="onHover">
-  <app-popup-window></app-popup-window>
+  <app-popup-window @myInsertRemoveTrigger></app-popup-window>
 </ng-template>

@@ -26,7 +26,17 @@ export class PaginatorComponent implements OnInit {
           this.currentPage - 5,
           this.currentPage + 5
         ))
+      : this.currentPage - 4 <= this.totalpages.length &&
+        this.currentPage <= this.totalpages.length
+      ? (this.currentDisplayPages = this.totalpages.slice(-10))
       : null;
+    console.log(
+      'total pages: ',
+      this.totalpages,
+      'mss totalres',
+      this.mss.totalResult
+    );
+    console.log('current pages: ', this.currentDisplayPages);
   }
 
   changeCurrentDisplayPages(): void {}
@@ -34,7 +44,7 @@ export class PaginatorComponent implements OnInit {
   setTotalPages(): void {
     // *ngFor loop number
     if (this.mss.totalResult) {
-      for (let index = 0; index < +this.mss.totalResult; index++) {
+      for (let index = 0; index <= +this.mss.totalResult / 10; index++) {
         this.totalpages.push(index);
       }
     }
@@ -42,9 +52,9 @@ export class PaginatorComponent implements OnInit {
 
   setCurrentPos(e: any) {
     if (e) {
-      this.currentPage = +e.target.innerText;
-      this.mss.curreantPage = e.target.innerText;
-      console.log('current page', this.currentPage, this.mss.curreantPage);
+      // !!!!!!!!!!potential danger!!!!!!!!!!!!!!!!
+      this.currentPage = +e.target.innerText.trim();
+      this.mss.curreantPage = e.target.innerText.trim();
     }
   }
 }

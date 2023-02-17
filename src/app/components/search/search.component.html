@@ -1,6 +1,6 @@
 <div>
   <label for="title-search">Enter movie title</label>
-  <input (keydown)="movieSearch(movieTitle, movieYear)" #titleSearch type="text" id="title-search" placeholder="title"
+  <input (keyup)="movieSearch(movieTitle, movieYear)" #titleSearch type="text" id="title-search" placeholder="title"
     (input)="movieTitle=titleSearch.value">
 
   <label for="year-search">Choose movie year</label>
@@ -8,9 +8,14 @@
 </div>
 
 <div>
-  <button (click)="movieSearch(movieTitle, movieYear)">Search</button>
+  <button (click)="movieSearch(movieTitle, movieYear)" class="btn">Search</button>
 </div>
-<ng-template [ngIf]="movies">
-  <app-page [movies]="movies"></app-page>
 
+<ng-template [ngIf]="movies">
+  <router-outlet></router-outlet>
 </ng-template>
+
+
+<!-- <ng-template [ngIf]="movies">
+  <app-page [movies]="movies"></app-page>
+</ng-template> -->

@@ -6,17 +6,17 @@ import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
 
 @Component({
-  selector: 'app-random-movies',
-  templateUrl: './random-movies.component.html',
-  styleUrls: ['./random-movies.component.scss'],
+  selector: 'app-random-series',
+  templateUrl: './random-series.component.html',
+  styleUrls: ['./random-series.component.scss'],
 })
-export class RandomMoviesComponent implements OnInit {
+export class RandomSeriesComponent implements OnInit {
   movies: MovieInterface[] = [];
 
   constructor(private mss: MovieSearchService) {}
 
   ngOnInit(): void {
-    this.getRandomMovies('movie');
+    this.getRandomMovies('series');
   }
 
   getRandomMovies(type: string) {

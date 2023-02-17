@@ -1,9 +1,23 @@
 @use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+
 .paginator-list {
   display: flex;
   justify-content: center;
   @include unlist;
-  & a {
-    color: black;
-  }
+  // & a {
+  //   color: black;
+  // }
+}
+
+.page-index:hover {
+  background-color: $color-gray-light;
+  color: $color-light;
+  border-radius: 50%;
+}
+
+.active {
+  background-color: $color-accent;
+  border-radius: 100%;
+  color: $color-light;
 }

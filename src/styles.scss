@@ -88,6 +88,21 @@ h3 {
     font-size: 1.125rem;
   }
 }
+
+h4 {
+  margin: 0;
+
+  letter-spacing: 0.05em;
+
+  color: $color-gray;
+
+  font-size: 1.125rem;
+  font-weight: bold;
+
+  @include md {
+    font-size: 1.1125rem;
+  }
+}
 a {
   text-decoration: none;
 

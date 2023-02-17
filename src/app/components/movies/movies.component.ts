@@ -12,14 +12,25 @@ import { CureantPositionService } from 'src/app/services/current-position.servic
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { debounce } from 'lodash';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
+  animations: [
+    trigger('myInsertRemoveTrigger', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('100ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [animate('100ms', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class MoviesComponent implements OnInit, OnChanges {
   @Input() movies: MovieInterface[] | undefined;
+
   cureantImdbID?: string;
   onHover: boolean = false;
   do?: any;
@@ -34,9 +45,7 @@ export class MoviesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   leave() {
     // setTimeout(() => {

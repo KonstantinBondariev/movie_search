@@ -3,17 +3,17 @@
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #elseBlock>
-
     <div>
       <div class="movie__title">
         <h4 class="title">{{movie?.Title}}</h4>
+        <app-rating [imdbRating]="movie?.imdbRating"></app-rating>
       </div>
       <div class="movie__info">
-        <div>{{movie?.Director}}</div>
-        <div>{{movie?.Country}}</div>
-        <div>{{movie?.Genre}}</div>
-        <div>{{movie?.Language}}</div>
-        <div>{{movie?.Ratings | json}}</div>
+        <div><b>Director:</b>{{movie?.Director}}</div>
+        <div><b>Country:</b>{{movie?.Country}}</div>
+        <div><b>Genre</b>{{movie?.Genre}}</div>
+        <div><b>Language</b>{{movie?.Language}}</div>
+        <div><b></b>{{movie?.Ratings | json}}</div>
       </div>
       <div class="movie__imdb-rating">Imdb rating: {{movie?.imdbRating}}</div>
     </div>
