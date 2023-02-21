@@ -2,7 +2,7 @@
 
 Hosting URL: https://movie-search-a1028.web.app
 
-web service: https://www.omdbapi.com/
+web services: https://www.omdbapi.com/, https://imdb-api.com/
 
 firebase deploy: firebase deploy --only hosting
 

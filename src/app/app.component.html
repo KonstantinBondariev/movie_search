@@ -1,11 +1,14 @@
 <div class="container">
-  <h1 сlass="title">{{title.toLocaleUpperCase()}}</h1>
-  <nav class="nav">
-    <app-navigation></app-navigation>
-  </nav>
+  <header>
+    <h1 сlass="title">{{title.toLocaleUpperCase()}}</h1>
+    <nav class="nav">
+      <app-navigation></app-navigation>
+    </nav>
+  </header>
   <main>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
 </div>

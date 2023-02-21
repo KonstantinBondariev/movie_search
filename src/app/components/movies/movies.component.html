@@ -12,7 +12,7 @@
 
       <ng-template #elseBlock1>
         <img src="../../../assets/img/no-pictures.png" alt="{{movie.imdbID}}" (mouseenter)="enter($event)"
-          (mouseenter)="setPosition($event)" (mouseleave)="leave()">
+          (mouseenter)="setPosition($event)" (mouseleave)="leave()" class="poster__img">
       </ng-template>
 
       <div *ngIf="movie.Type == 'movie'; then thenBlock2 else elseBlock2">

@@ -5,7 +5,12 @@ tr :last-child {
   padding-left: 20px;
 }
 
+tr :first-child {
+  width: 150px;
+}
+
 .container {
+  max-width: 100%;
   padding: 20px;
   background-color: $color-gray-light;
 }
@@ -16,6 +21,9 @@ tr :last-child {
   flex-direction: column;
   &__about {
     display: flex;
+    @include md {
+      flex-direction: column;
+    }
   }
   &__info {
     margin-left: 20px;
@@ -30,6 +38,10 @@ tr :last-child {
   }
   &__trailer {
     margin-top: 20px;
+    max-width: 100%;
     text-align: center;
   }
+}
+iframe {
+  max-width: 100%;
 }

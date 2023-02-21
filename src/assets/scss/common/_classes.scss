@@ -13,6 +13,12 @@
 
   font-size: 1.125rem;
   font-weight: 400;
+
+  @include lg {
+    padding: 0.25em 0.5em;
+    font-size: 1rem;
+    font-weight: 300;
+  }
   &--light {
     border: 2px solid $color-light;
     background-color: rgba($color: $color-light, $alpha: 0.1);

@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { RandomSeriesComponent } from './components/random-series/random-series.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MoviesListComponent } from './components/movies-list/movies-list.component';
+import { MovieUnitComponent } from './components/movie-unit/movie-unit.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RandomSeriesComponent,
     RatingComponent,
     PageNotFoundComponent,
+    FooterComponent,
+    MoviesListComponent,
+    MovieUnitComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +51,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

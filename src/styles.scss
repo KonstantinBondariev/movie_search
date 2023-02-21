@@ -109,6 +109,19 @@ a {
   color: $color-primary;
 }
 .container {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
+  padding: 0 20px;
+  @include ul-xl {
+    max-width: 1140px;
+  }
+  @include xl-lg {
+    max-width: 960px;
+  }
+  @include lg-md {
+    max-width: 720px;
+  }
+  @include md-sm {
+    max-width: 540px;
+  }
 }

@@ -1,10 +1,10 @@
 <div class="form">
   <label for="title-search">Enter movie title: </label>
   <input (keyup)="movieSearch(movieTitle, movieYear)" #titleSearch type="text" id="title-search" placeholder="title"
-    (input)="movieTitle=titleSearch.value" class="input--text">
+    (input)="movieTitle=titleSearch.value" class="input">
 
   <label for="year-search">Choose movie year: </label>
-  <input #yearSearch type="number" id="year-search" (input)="movieYear=yearSearch.value" class="input--number">
+  <input #yearSearch type="number" id="year-search" (input)="movieYear=yearSearch.value" class="input">
   <button (click)="movieSearch(movieTitle, movieYear)" class="btn">Search</button>
 </div>
 

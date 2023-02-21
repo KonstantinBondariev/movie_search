@@ -2,6 +2,7 @@
 @use "../../../assets/scss/presets" as *;
 
 .navbar {
+  padding-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,4 +17,14 @@
 .navbar__list {
   @include unlist;
   display: flex;
+  gap: $gap;
+  @include md {
+    display: none;
+  }
+}
+
+.navbar__btn {
+  @include md-min {
+    display: none;
+  }
 }

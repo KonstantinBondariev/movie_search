@@ -1,0 +1,14 @@
+@use "../../../assets/scss/mixins/" as *;
+
+@use "../../../assets/scss/presets/" as *;
+.movies {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: 450px;
+  grid-row-gap: 20px;
+  gap: 20px;
+
+  @include lg {
+  }
+}

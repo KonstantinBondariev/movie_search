@@ -1,18 +1,13 @@
 @use "../assets/scss/presets/" as *;
 
 .container {
-  max-width: 1280px;
-  margin: 20px;
-
+  width: 100%;
+  min-height: 100vh;
+}
+header {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
-.content {
-  order: 3;
-}
-.title {
-  order: 2;
-}
-.nav {
-  order: -1;
+main {
+  min-height: calc(100vh - 140px);
 }
