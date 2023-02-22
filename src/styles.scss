@@ -54,19 +54,19 @@ h2 {
   line-height: 1.2em;
 
   @include lg-min {
-    margin-bottom: 3rem;
+    margin-bottom: 1.75rem;
 
     font-size: 2.5rem;
   }
   @include lg-md {
     margin-bottom: 2.625rem;
 
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
   @include md-sm {
     margin-bottom: 2.25rem;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   @include sm {
     margin-bottom: 2.25rem;

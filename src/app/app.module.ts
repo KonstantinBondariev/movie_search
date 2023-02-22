@@ -24,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
 import { MovieUnitComponent } from './components/movie-unit/movie-unit.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CommentsModule } from './comments/comments.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,8 @@ import { MenuComponent } from './components/menu/menu.component';
     MovieUnitComponent,
     MenuComponent,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,8 +56,7 @@ import { MenuComponent } from './components/menu/menu.component';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
+    CommentsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

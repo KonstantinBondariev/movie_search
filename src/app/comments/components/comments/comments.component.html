@@ -1,0 +1,11 @@
+<div *ngIf="! comments;else elseBlock">
+  no comments
+</div>
+
+<ng-template #elseBlock>
+  <div *ngFor="let commment of comments">
+    <div>
+      <span><b>{{commment.userName}}</b>, {{commment.date}}: "{{commment.comment}}"</span>
+    </div>
+  </div>
+</ng-template>

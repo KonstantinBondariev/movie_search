@@ -1,17 +1,18 @@
 @use "../../../assets/scss/mixins/" as *;
 @use "../../../assets/scss/presets/" as *;
 
-tr :last-child {
-  padding-left: 20px;
-}
-
 tr :first-child {
   width: 150px;
+  @include lg-md {
+    padding-left: 2rem;
+  }
+  @include md {
+    width: 100px;
+  }
 }
 
 .container {
   max-width: 100%;
-  padding: 20px;
   background-color: $color-gray-light;
 }
 
@@ -19,29 +20,61 @@ tr :first-child {
   width: 100%;
   display: flex;
   flex-direction: column;
-  &__about {
-    display: flex;
-    @include md {
-      flex-direction: column;
-    }
-  }
-  &__info {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: $gap;
-  }
-  &__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
+
   &__trailer {
-    margin-top: 20px;
+    margin-top: 1rem;
     max-width: 100%;
     text-align: center;
   }
+
+  &__info {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+      "poster title"
+      "poster details";
+    gap: 1rem;
+    @include lg {
+      grid-template-areas:
+        "title"
+        "poster"
+        "details";
+    }
+  }
+  &__poster {
+    grid-area: poster;
+    margin-top: 1rem;
+    max-width: 100%;
+    text-align: center;
+    & img {
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    grid-area: title;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    @include xl {
+      flex-direction: column;
+      justify-content: start;
+    }
+  }
+
+  &__details {
+    margin: 1rem 0;
+    grid-area: details;
+  }
+
+  &__plot {
+    margin-top: 2rem;
+  }
 }
+
 iframe {
   max-width: 100%;
 }

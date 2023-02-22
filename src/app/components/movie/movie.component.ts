@@ -24,6 +24,7 @@ export class MovieComponent implements OnInit, OnChanges {
   movie?: MovieFullDataInterface;
   trailerData?: ImdbApiYouTubeTrailerResponse;
   urlSafe?: SafeResourceUrl;
+  imdbId!: string | null;
 
   constructor(
     private mss: MovieSearchService,
@@ -35,6 +36,7 @@ export class MovieComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    this.imdbId = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.getMovieData(id);
       this.getTrailerData(id);
