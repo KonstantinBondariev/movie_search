@@ -1,8 +1,6 @@
 @use "../assets/scss/presets/" as *;
 
 .container {
-  padding: 0;
-  width: 100%;
   min-height: 100vh;
 }
 header {
@@ -10,5 +8,5 @@ header {
   flex-direction: column-reverse;
 }
 main {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 180px);
 }

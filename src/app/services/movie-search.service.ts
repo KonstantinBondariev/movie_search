@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { OMDbAPIResponseInterface } from '../shared/types/omdb-api-response-interface';
 import { MovieInterface } from '../shared/types/movie-interface';
 import { MovieFullDataInterface } from '../shared/types/movie-full-data-interface';

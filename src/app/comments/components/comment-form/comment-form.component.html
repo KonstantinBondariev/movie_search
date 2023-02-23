@@ -1,9 +1,16 @@
-<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-  <label for="userName">Enter your name:</label>
-  <input id="userName" type="text" formControlName="userName">
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="form-control">
+    <label for="userName">Enter your name:</label>
+    <input id="userName" type="text" formControlName="userName" class="input" placeholder="your name"
+      [ngClass]="{'input--valid': commentForm.controls.userName.valid, 'input--invalid': (commentForm.controls.userName.dirty  ) && !commentForm.controls.userName.valid}">
+  </div>
 
-  <label for="comment">Enter your comment:</label>
-  <textarea id="comment" formControlName="comment"></textarea>
+  <div class="form-control">
+    <label for="comment">Enter your comment:</label>
+    <textarea id="comment" formControlName="comment" class="input input--text-area"
+      [ngClass]="{'input--valid': commentForm.controls.userName.valid, 'input--invalid': (commentForm.controls.userName.dirty  ) && !commentForm.controls.userName.valid}">
+      placeholder="your comment" ></textarea>
+  </div>
 
   <button type="submit" [disabled]="!commentForm.valid" class="btn">Submit</button>
 </form>

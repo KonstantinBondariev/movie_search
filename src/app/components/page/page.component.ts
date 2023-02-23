@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
@@ -11,11 +11,14 @@ import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response
 })
 export class PageComponent implements OnInit {
   movies?: MovieInterface[];
+
   constructor(
     private route: ActivatedRoute,
     private movieSearchService: MovieSearchService
   ) {
     route.params.subscribe((params) => {
+      console.log(params);
+
       if (params['id'] && this.movieSearchService.currentTitle) {
         this.getData(
           this.movieSearchService.currentTitle,

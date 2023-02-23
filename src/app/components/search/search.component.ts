@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit, OnChanges {
   movieYear: string = '';
   movies?: MovieInterface[]; // nujen??
   currentPage: number = this.movieSearchService.curreantPage;
+  flag: boolean = false;
 
   constructor(
     private movieSearchService: MovieSearchService,
@@ -46,7 +47,11 @@ export class SearchComponent implements OnInit, OnChanges {
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;
         this.movieSearchService.currentMovies = res?.Search;
+        this.flag = !this.flag;
       },
     });
+  }
+  onKeyDown(e: KeyboardEvent): void {
+    if (e.key === 'Enter') this.movieSearch(this.movieTitle, this.movieYear);
   }
 }

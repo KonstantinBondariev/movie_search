@@ -3,16 +3,14 @@
 @use "../../../assets/scss/presets/variables" as *;
 
 .form {
-  padding: 20px 0;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-
-  & label {
-    margin-right: 20px;
+  width: 100%;
+  @include lg-min {
+    flex-direction: row;
   }
+}
 
-  @include md {
-    flex-direction: column;
+.form-control {
+  @include lg-min {
+    width: 40%;
   }
 }

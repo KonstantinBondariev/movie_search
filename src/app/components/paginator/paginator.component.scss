@@ -3,11 +3,18 @@
 
 .paginator-list {
   display: flex;
+  gap: $gap-sm;
   justify-content: center;
   @include unlist;
-  // & a {
-  //   color: black;
-  // }
+  margin-bottom: 20px;
+}
+
+.page-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
 }
 
 .page-index:hover {

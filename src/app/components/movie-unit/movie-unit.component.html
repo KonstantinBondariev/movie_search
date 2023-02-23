@@ -1,64 +1,5 @@
-<!-- <a [id]="movie.imdbID" routerLink="/movie/{{movie.imdbID}}" target="_blank" (mouseenter)="enter($event)"
-  (mouseleave)="leave()" class="container">
-
-  <div *ngIf="!onHover; then movieBlock else movieFullInfoBlock"></div>
-
-  <ng-template #movieBlock class="movie">
-    <div class="movie__poster poster">
-      <div *ngIf="movie.Poster !== 'N/A'; then thenBlock1 else elseBlock1"></div>
-
-      <ng-template #thenBlock1>
-        <img class="poster__img" src="{{movie.Poster}}" alt="{{movie.imdbID}}">
-      </ng-template>
-
-      <ng-template #elseBlock1>
-        <img src="../../../assets/img/no-pictures.png" alt="{{movie.imdbID}}" class="poster__img">
-      </ng-template>
-
-      <div *ngIf="movie.Type == 'movie'; then thenBlock2 else elseBlock2">
-      </div>
-      <ng-template #thenBlock2><img class="poster__icon" src="../../../assets/img/film.png" alt="movie"></ng-template>
-      <ng-template #elseBlock2><img class="poster__icon" src="../../../assets/img/series.png" alt="series">
-      </ng-template>
-    </div>
-
-    <div class="movie__title">
-      <h4>{{movie.Title}}. {{movie.Year}}</h4>
-    </div>
-  </ng-template>
-
-  <ng-template #movieFullInfoBlock class="movie-full-infor">
-    <div *ngIf="!movieFullInfo; else elseBlock" class="content">
-      <mat-spinner></mat-spinner>
-    </div>
-    <ng-template #elseBlock>
-      <div class="movie-full-info__content">
-        <div class="movie-full-infor__title">
-          <h4 class="title">{{movieFullInfo?.Title}}</h4>
-          <app-rating [imdbRating]="movieFullInfo?.imdbRating"></app-rating>
-        </div>
-        <div class="movie-full-infor__info">
-          <div><b>Genre: </b>{{movieFullInfo?.Genre}}</div>
-          <div><b>Director: </b>{{movieFullInfo?.Director}}</div>
-          <div><b>Country: </b>{{movieFullInfo?.Country}}</div>
-          <div><b>Language: </b>{{movieFullInfo?.Language}}</div>
-          <div><b>Ratings: </b>
-            <span>
-              <div *ngFor="let source of movieFullInfo?.Ratings">{{source.Source}}:
-                <b>{{source.Value}}</b>
-              </div>
-            </span>
-          </div>
-        </div>
-        <div class="movie-full-infor__imdb-rating">Imdb rating: <b>{{movieFullInfo?.imdbRating}}</b></div>
-      </div>
-    </ng-template>
-
-  </ng-template>
-</a> -->
 <a [id]="movie.imdbID" routerLink="/movie/{{movie.imdbID}}" target="_blank" (mouseenter)="enter($event)"
   (mouseleave)="leave()" class="container">
-
 
   <div class="movie">
     <div class="movie__poster poster">
@@ -111,7 +52,6 @@
         <div class="movie-full-infor__imdb-rating">Imdb rating: <b>{{movieFullInfo?.imdbRating}}</b></div>
       </div>
     </ng-template>
-
   </div>
 
   <div class="ovrelay" [ngStyle]="setStyle()"></div>
