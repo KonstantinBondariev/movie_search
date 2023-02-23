@@ -17,7 +17,7 @@
 
 <form #form="ngForm">
   <div>
-
+    bmbmmb
     <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required
       [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
     <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
@@ -25,7 +25,7 @@
     </div>
 
   </div>
-  <div class=>
+  <div>
 
     <button type="button" class="btn btn-sm btn-primary" (click)="send(form)">Send</button>
 
