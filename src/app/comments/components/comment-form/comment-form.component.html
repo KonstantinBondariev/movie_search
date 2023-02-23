@@ -15,4 +15,21 @@
   <button type="submit" [disabled]="!commentForm.valid" class="btn">Submit</button>
 </form>
 
+<form #form="ngForm">
+  <div>
+
+    <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required
+      [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+    <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+      <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+    </div>
+
+  </div>
+  <div class=>
+
+    <button type="button" class="btn btn-sm btn-primary" (click)="send(form)">Send</button>
+
+  </div>
+</form>
+
 <app-comments [imdbID]="imdbId" [change]="change"></app-comments>

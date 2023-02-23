@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { CommentsService } from 'src/app/services/comments.service';
 import { CommentInterface } from 'src/app/shared/types/comment-interface';
 
@@ -20,10 +26,28 @@ export class CommentFormComponent implements OnInit {
       Validators.maxLength(500),
     ]),
   });
-  constructor(private commentsService: CommentsService) {}
+
+  token: string | undefined;
+
+  constructor(private commentsService: CommentsService) {
+    this.token = undefined;
+  }
+
   @Input() imdbId!: string | null;
   change: boolean = false;
+
   ngOnInit(): void {}
+
+  public send(form: NgForm): void {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+    console.debug(`Token [${this.token}] generated`);
+  }
 
   onSubmit(): void {
     if (
