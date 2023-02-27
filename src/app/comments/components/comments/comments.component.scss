@@ -1,6 +1,9 @@
 @use "../../../../assets/scss/presets/" as *;
 @use "../../../../assets/scss/mixins/" as *;
-
+.container {
+  padding: 0;
+  background: none;
+}
 .comment {
   display: flex;
   padding: 0.5rem 1rem;

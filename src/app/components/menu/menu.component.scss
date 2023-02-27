@@ -3,3 +3,14 @@
   border: none;
   background-color: $color-light;
 }
+
+.mat-menu-content {
+  background-color: $color-gray-light;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: $gap-sm;
+  padding: 0.5rem 1rem;
+}
