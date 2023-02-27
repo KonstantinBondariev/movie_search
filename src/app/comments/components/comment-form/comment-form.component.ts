@@ -34,8 +34,7 @@ export class CommentFormComponent implements OnInit {
   }
 
   @Input() imdbId!: string | null;
-  change: boolean = false;
-
+  change: boolean = false; // &&&&&&&&&&&&
   ngOnInit(): void {}
 
   resolved(captchaResponse: string) {
