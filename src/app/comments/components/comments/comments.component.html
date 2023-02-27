@@ -3,9 +3,15 @@
 </div>
 
 <ng-template #elseBlock>
-  <div *ngFor="let commment of comments">
-    <div>
-      <span><b>{{commment.userName}}</b>, {{commment.date}}: "{{commment.comment}}"</span>
+  <div *ngFor="let commment of comments; let i = index">
+    <div class="comment" [ngStyle]="{background: i%2 == 0? 'white' : '#E6E6E6'}">
+      <div class="comment__info">
+        <div class="comment__user-name">{{commment.userName}}</div>
+        <div class="comment__date">{{commment.date | date: 'short'}}</div>
+      </div>
+      <div class="comment__comment">
+        "{{commment.comment}}"
+      </div>
     </div>
   </div>
 </ng-template>

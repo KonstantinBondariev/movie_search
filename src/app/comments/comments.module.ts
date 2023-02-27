@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [CommentFormComponent, CommentsComponent],
@@ -16,6 +15,7 @@ import { environment } from 'src/environments/environment';
     CommonModule,
     ReactiveFormsModule,
     RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   providers: [],
   exports: [CommentFormComponent, CommentsComponent],

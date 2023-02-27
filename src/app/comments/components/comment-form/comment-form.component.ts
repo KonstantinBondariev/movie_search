@@ -25,32 +25,19 @@ export class CommentFormComponent implements OnInit {
       Validators.minLength(2),
       Validators.maxLength(500),
     ]),
+    recaptchaReactive: new FormControl('', [Validators.required]),
   });
 
-  token: string | undefined;
+  siteKey: string = '6LcCM6skAAAAAE8jynUPmsmeyWVefZ5AxhLXocny';
 
-  constructor(private commentsService: CommentsService) {
-    this.token = undefined;
-  }
+  comment = this.commentForm.controls.comment;
+  userName = this.commentForm.controls.userName;
+
+  constructor(private commentsService: CommentsService) {}
 
   @Input() imdbId!: string | null;
   change: boolean = false; // &&&&&&&&&&&&
   ngOnInit(): void {}
-
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
-  }
-
-  public send(form: NgForm): void {
-    if (form.invalid) {
-      for (const control of Object.keys(form.controls)) {
-        form.controls[control].markAsTouched();
-      }
-      return;
-    }
-
-    console.debug(`Token [${this.token}] generated`);
-  }
 
   onSubmit(): void {
     if (

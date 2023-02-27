@@ -1,9 +1,20 @@
 <div>
   <ul class="paginator-list">
+    <li *ngIf="currentPage >= 6">
+      <a [ngClass]="{'active': mss.curreantPage == 1}" class="page-index"
+        (click)="setCurrentPos($event); setCurrentDisplayPages()" routerLink="/search/page/1">&nbsp;1&nbsp;</a>
+    </li>
+
     <li *ngFor="let page of currentDisplayPages">
-      <a [ngClass]="{'active': page == currentPage -1}" class="page-index"
+      <a [ngClass]="{'active': page == mss.curreantPage -1}" class="page-index"
         (click)="setCurrentPos($event); setCurrentDisplayPages()"
         routerLink="/search/page/{{page+1}}">&nbsp;{{page+1}}&nbsp;</a>
+    </li>
+
+    <li *ngIf="currentPage <= totalpages[totalpages.length-1] - 5 ">
+      <a [ngClass]="{'active': mss.curreantPage == totalpages[totalpages.length-1] +1}" class="page-index"
+        (click)="setCurrentPos($event); setCurrentDisplayPages()"
+        routerLink="/search/page/{{totalpages[totalpages.length-1]+1}}">&nbsp;{{totalpages[totalpages.length-1]+1}}&nbsp;</a>
     </li>
   </ul>
 </div>

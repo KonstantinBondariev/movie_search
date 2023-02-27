@@ -4,6 +4,15 @@
 
 .form {
   width: 100%;
+  &__btn-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 23px;
+    @include lg {
+      padding-top: 0;
+    }
+  }
   @include lg-min {
     flex-direction: row;
   }

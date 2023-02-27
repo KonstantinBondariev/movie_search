@@ -10,7 +10,7 @@ export class PaginatorComponent implements OnInit {
   totalpages: number[] = [];
   currentDisplayPages!: number[];
   currentPage!: number;
-  constructor(private mss: MovieSearchService) {}
+  constructor(public mss: MovieSearchService) {}
 
   ngOnInit(): void {
     this.setTotalPages();

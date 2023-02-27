@@ -8,7 +8,7 @@
     <label for="year-search">Choose movie year: </label>
     <input #yearSearch type="number" id="year-search" (input)="movieYear=yearSearch.value" class="input">
   </div>
-  <div>
+  <div class="form__btn-block">
     <button (click)="movieSearch(movieTitle, movieYear)" class="btn">Search</button>
   </div>
 </div>
@@ -20,8 +20,3 @@
 <ng-template [ngIf]="movies && !flag">
   <router-outlet></router-outlet>
 </ng-template>
-
-
-<!-- <ng-template [ngIf]="movies">
-  <app-page [movies]="movies"></app-page>
-</ng-template> -->
