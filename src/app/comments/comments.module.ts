@@ -3,13 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
 
-import {
-  RECAPTCHA_SETTINGS,
-  RecaptchaFormsModule,
-  RecaptchaModule,
-  RecaptchaSettings,
-} from 'ng-recaptcha';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -21,16 +16,8 @@ import { environment } from 'src/environments/environment';
     CommonModule,
     ReactiveFormsModule,
     RecaptchaModule,
-    RecaptchaFormsModule,
   ],
-  providers: [
-    {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: {
-        siteKey: environment.recaptcha.siteKey,
-      } as RecaptchaSettings,
-    },
-  ],
+  providers: [],
   exports: [CommentFormComponent, CommentsComponent],
 })
 export class CommentsModule {}

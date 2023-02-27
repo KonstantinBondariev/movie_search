@@ -38,6 +38,10 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+
   public send(form: NgForm): void {
     if (form.invalid) {
       for (const control of Object.keys(form.controls)) {
