@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CommentInterface } from '../shared/types/comment-interface';
+import { CommentsDbResponseInterface } from '../shared/types/comments-DB-response-interface';
 import { CommentsResponse } from '../shared/types/comments-response';
 
 const url =
@@ -20,7 +21,7 @@ export class CommentsService {
   getComments(imdbID: string): Observable<CommentsResponse[]> {
     return this.http.get(`${url}${imdbID}.json`).pipe(
       map((res: any) => {
-        const arr: any[] = [];
+        const arr: CommentsResponse[] = [];
         Object.keys(res).forEach((key) => {
           arr.push({ key, ...res[key] });
         });

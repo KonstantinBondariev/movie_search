@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit, OnChanges {
+export class SearchComponent implements OnInit {
   movieTitle: string = '';
   movieYear: string = '';
   movies?: MovieInterface[]; // nujen??
@@ -20,22 +20,10 @@ export class SearchComponent implements OnInit, OnChanges {
     private movieSearchService: MovieSearchService,
     private route: ActivatedRoute
   ) {
-    this.movieSearch = debounce(this.movieSearch, 50);
+    this.movieSearch = debounce(this.movieSearch, 100);
   }
 
   ngOnInit(): void {}
-
-  // ??????
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-
-    let page = this.route.snapshot.paramMap.get('id');
-    if (page && this.movieSearchService.currentTitle)
-      this.movieSearch(
-        this.movieSearchService.currentTitle,
-        this.movieSearchService.currentYear
-      );
-  }
 
   movieSearch(title: string, year: string): void {
     if (title.length < 3) return;

@@ -1,11 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NgForm,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommentsService } from 'src/app/services/comments.service';
 import { CommentInterface } from 'src/app/shared/types/comment-interface';
 
@@ -36,7 +30,7 @@ export class CommentFormComponent implements OnInit {
   constructor(private commentsService: CommentsService) {}
 
   @Input() imdbId!: string | null;
-  change: boolean = false; // &&&&&&&&&&&&
+  change: boolean = false; // to refresh comments.component
   ngOnInit(): void {}
 
   onSubmit(): void {
@@ -53,7 +47,6 @@ export class CommentFormComponent implements OnInit {
         ),
         this.imdbId
       );
-      this.change = !this.change;
       this.commentForm.reset();
     }
   }
@@ -70,6 +63,7 @@ export class CommentFormComponent implements OnInit {
     this.commentsService.createComment(comment, imdbID).subscribe({
       next: (res) => {
         console.log(res);
+        this.change = !this.change;
       },
     });
   }

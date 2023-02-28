@@ -1,13 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+
 import { CureantPositionService } from 'src/app/services/current-position.service';
 import { MovieSearchService } from 'src/app/services/movie-search.service';
 import { MovieInterface } from 'src/app/shared/types/movie-interface';
@@ -28,7 +20,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
     ]),
   ],
 })
-export class MoviesComponent implements OnInit, OnChanges {
+export class MoviesComponent implements OnInit {
   @Input() movies: MovieInterface[] | undefined;
 
   cureantImdbID?: string;
@@ -44,8 +36,6 @@ export class MoviesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {} // delete
 
   leave() {
     clearTimeout(this.do);

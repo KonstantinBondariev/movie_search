@@ -6,7 +6,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { CommentsService } from 'src/app/services/comments.service';
-import { CommentInterface } from 'src/app/shared/types/comment-interface';
 import { CommentsResponse } from 'src/app/shared/types/comments-response';
 
 @Component({

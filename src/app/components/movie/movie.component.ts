@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -19,8 +13,7 @@ import { ImdbApiYouTubeTrailerResponse } from 'src/app/shared/types/imdb-api-you
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss'],
 })
-export class MovieComponent implements OnInit, OnChanges {
-  // @Input() currentImdbId?: string | undefined; !!!!!!!!!!!!!!!!!!!!!!dell
+export class MovieComponent implements OnInit {
   movie?: MovieFullDataInterface;
   trailerData?: ImdbApiYouTubeTrailerResponse;
   urlSafe?: SafeResourceUrl;
@@ -41,16 +34,6 @@ export class MovieComponent implements OnInit, OnChanges {
       this.getMovieData(id);
       this.getTrailerData(id);
     }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // if (this.currentImdbId) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!dell
-    //   this.mss.getfullData(this.currentImdbId).subscribe({
-    //     next: (res: MovieFullDataInterface | undefined) => {
-    //       this.movie = res;
-    //       console.log(this.movie);
-    //     },
-    //   });
   }
 
   getMovieData(id: string): void {
