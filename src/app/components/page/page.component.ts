@@ -46,6 +46,7 @@ export class PageComponent implements OnInit {
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;
       },
+      error: (err) => console.error(err),
     });
   }
 }

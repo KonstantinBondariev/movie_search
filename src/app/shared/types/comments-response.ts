@@ -3,4 +3,5 @@ export interface CommentsResponse {
   date: Date;
   key: string;
   comment: string;
+  newStatus: boolean;
 }

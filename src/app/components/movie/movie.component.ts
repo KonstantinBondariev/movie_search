@@ -41,6 +41,7 @@ export class MovieComponent implements OnInit {
       next: (res: MovieFullDataInterface | undefined) => {
         this.movie = res;
       },
+      error: (err) => console.error(err),
     });
   }
 
@@ -50,6 +51,7 @@ export class MovieComponent implements OnInit {
         this.trailerData = res;
         this.createUrlForIframe();
       },
+      error: (err) => console.error(err),
     });
   }
 

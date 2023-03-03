@@ -10,13 +10,17 @@ import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: 'search',
     component: SearchComponent,
     children: [
       {
         path: '',
         component: PageComponent,
-        // outlet: 'movies',
       },
       {
         path: 'page/:id',
@@ -28,11 +32,11 @@ const routes: Routes = [
   { path: 'random-movies', component: RandomMoviesComponent },
   { path: 'random-series', component: RandomSeriesComponent },
   { path: '', redirectTo: '/search', pathMatch: 'full' },
+
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })

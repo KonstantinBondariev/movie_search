@@ -56,6 +56,7 @@ export class CommentFormComponent implements OnInit {
       userName,
       date: new Date(),
       comment,
+      newStatus: true,
     };
   }
 
@@ -65,6 +66,7 @@ export class CommentFormComponent implements OnInit {
         console.log(res);
         this.change = !this.change;
       },
+      error: (err) => console.error(err),
     });
   }
 }

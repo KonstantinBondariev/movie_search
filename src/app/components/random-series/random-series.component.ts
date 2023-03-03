@@ -27,6 +27,7 @@ export class RandomSeriesComponent implements OnInit {
               this.series.push(res?.Search[0]);
             }
           },
+          error: (err) => console.error(err),
         });
       });
     }

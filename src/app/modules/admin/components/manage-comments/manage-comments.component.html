@@ -1,0 +1,49 @@
+<!-- <div *ngFor="let folder of folders ">
+  <div (click)="getFolderData(folder.imdbId); currentImdbID = folder.imdbId">{{folder.C}}</div>
+</div>
+
+<div *ngIf="comments">
+  <div *ngFor="let comment of comments">
+    <div>
+      <h5>{{comment.key}}</h5>
+      <div>{{comment.userName}}</div>
+      <div>{{comment.date | date}}</div>
+      <div>{{comment.comment}}</div>
+      <button (click)="deleteComment(currentImdbID, comment.key)">Dell</button>
+    </div>
+  </div>
+</div> -->
+
+<cdk-accordion class="example-accordion">
+  <cdk-accordion-item *ngFor="let folder of folders; let index = index;" #accordionItem="cdkAccordionItem"
+    class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+    [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
+    <div class="example-accordion-item-header" (click)="accordionItem.toggle(); onClick(folder, $event)">
+      {{ folder.imdbId }}
+      <span class="example-accordion-item-description">
+        Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+      </span>
+    </div>
+    <div class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+      <div *ngIf="comments">
+        <div *ngFor="let comment of comments; let i = index">
+          <div>
+            <h5 [ngClass]="{'new': comment.newStatus}"><b>key: </b>{{comment.key}}</h5>
+            <div><b>user name: </b>{{comment.userName}}</div>
+            <div><b>date: </b>{{comment.date | date}}</div>
+            <div><b>comment: </b>{{comment.comment}}</div>
+            <button (click)="deleteComment(currentImdbID, comment.key)">Dell</button>
+            <div>
+              <label for="newComment">Mark as viewed {{i}}</label>
+              <input (change)="newStatus = false" [name]="'newStatus' + i" [id]="'newStatus' + i" type="checkbox">
+              <button
+                (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))">Submit
+                Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>

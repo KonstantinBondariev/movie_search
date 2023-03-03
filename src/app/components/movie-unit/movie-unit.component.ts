@@ -24,6 +24,7 @@ export class MovieUnitComponent implements OnInit {
       next: (res) => {
         this.movieFullInfo = res;
       },
+      error: (err) => console.error(err),
     });
   }
 

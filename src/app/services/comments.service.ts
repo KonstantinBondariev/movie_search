@@ -5,8 +5,8 @@ import { CommentInterface } from '../shared/types/comment-interface';
 import { CommentsDbResponseInterface } from '../shared/types/comments-DB-response-interface';
 import { CommentsResponse } from '../shared/types/comments-response';
 
-const url =
-  'https://movie-search-a1028-default-rtdb.europe-west1.firebasedatabase.app/';
+const urlComments =
+  'https://movie-search-a1028-default-rtdb.europe-west1.firebasedatabase.app/comments/';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +15,11 @@ export class CommentsService {
   constructor(private http: HttpClient) {}
 
   createComment(comment: CommentInterface, imdbID: string): Observable<any> {
-    return this.http.post(`${url}${imdbID}.json`, comment);
+    return this.http.post(`${urlComments}${imdbID}.json`, comment);
   }
 
   getComments(imdbID: string): Observable<CommentsResponse[]> {
-    return this.http.get(`${url}${imdbID}.json`).pipe(
+    return this.http.get(`${urlComments}${imdbID}.json`).pipe(
       map((res: any) => {
         const arr: CommentsResponse[] = [];
         Object.keys(res).forEach((key) => {

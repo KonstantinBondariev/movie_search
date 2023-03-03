@@ -27,6 +27,7 @@ export class RandomMoviesComponent implements OnInit {
               this.movies.push(res?.Search[0]);
             }
           },
+          error: (err) => console.error(err),
         });
       });
     }

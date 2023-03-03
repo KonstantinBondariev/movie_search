@@ -25,6 +25,7 @@ export class PopupWindowComponent implements OnInit {
       next: (res: MovieFullDataInterface | undefined) => {
         this.movie = res;
       },
+      error: (err) => console.error(err),
     });
   }
 

@@ -37,6 +37,7 @@ export class SearchComponent implements OnInit {
         this.movieSearchService.currentMovies = res?.Search;
         this.flag = !this.flag;
       },
+      error: (err) => console.error(err),
     });
   }
   onKeyDown(e: KeyboardEvent): void {
