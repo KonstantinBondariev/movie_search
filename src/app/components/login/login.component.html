@@ -1,0 +1,29 @@
+<h2>Login page</h2>
+
+<em [ngClass]="{'login': authService.isLoggedIn}">status: {{massage}}</em>
+
+<div *ngIf="authService.isLoggedIn; then thenBlock;else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <div>
+    <button type="button" class="btn" (click)="logOut()">Logout</button>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="form">
+    <div class="form-group">
+      <label class="label">Login</label>
+      <input type="text" [(ngModel)]="userLogin" class="input">
+    </div>
+    <div class="form-group">
+      <label class="label">Password</label>
+      <input type="password" [(ngModel)]="userPas" class="input">
+
+    </div>
+    <div>
+      <button type="button" class="btn" (click)="logIn()">Login</button>
+    </div>
+  </div>
+
+</ng-template>

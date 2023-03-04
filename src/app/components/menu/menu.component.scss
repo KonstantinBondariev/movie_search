@@ -14,3 +14,7 @@
   gap: $gap-sm;
   padding: 0.5rem 1rem;
 }
+.disabled {
+  color: $color-gray;
+  font-weight: 200;
+}

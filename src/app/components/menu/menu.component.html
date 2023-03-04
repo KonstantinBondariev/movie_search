@@ -5,13 +5,17 @@
   <div>
     <a routerLink="/search">Search movie</a>
   </div>
-  <div>
-    <a routerLink="/admin">Admin</a>
-  </div>
+
   <div>
     <a routerLink="/random-movies">Random movies</a>
   </div>
   <div>
     <a routerLink="/random-series">Random series</a>
+  </div>
+  <div>
+    <a routerLink="/admin" [ngClass]="{'disabled': !authService.isLoggedIn}">Admin</a>
+  </div>
+  <div>
+    <a routerLink="/login">Login</a>
   </div>
 </mat-menu>

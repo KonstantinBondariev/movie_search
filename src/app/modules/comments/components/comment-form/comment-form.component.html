@@ -1,5 +1,5 @@
 <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="form">
-  <div class="form-control">
+  <div class="form-group">
     <label for="userName"
       [ngClass]="{'label--valid': userName.valid, 'label--invalid': (userName.dirty  ) && !userName.valid}"
       class="label">Enter your name:
@@ -10,7 +10,7 @@
       [ngClass]="{'input--valid': userName.valid, 'input--invalid': (userName.dirty  ) && !userName.valid}">
   </div>
 
-  <div class="form-control">
+  <div class="form-group">
     <label for="comment"
       [ngClass]="{'label--valid': comment.valid, 'label--invalid': (comment.dirty  ) && !comment.valid}"
       class="label">Enter your comment:

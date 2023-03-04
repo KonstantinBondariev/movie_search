@@ -20,13 +20,15 @@ body {
   background-color: $color-gray-light;
 }
 h1 {
-  margin: 0;
+  margin-bottom: 2rem;
 
   font-family: $font-header;
   font-weight: 300;
   line-height: 1.2em;
 
   @include lg-min {
+    margin-bottom: 1.75rem;
+
     letter-spacing: 0.08em; // !!!!!!
 
     font-size: 3.75rem;

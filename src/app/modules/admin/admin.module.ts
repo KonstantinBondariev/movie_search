@@ -6,9 +6,10 @@ import { ManageCommentsComponent } from './components/manage-comments/manage-com
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { FormsModule } from '@angular/forms';
+import { BadgeComponent } from './components/badge/badge.component';
 
 @NgModule({
-  declarations: [ManageCommentsComponent, AdminComponent],
+  declarations: [ManageCommentsComponent, AdminComponent, BadgeComponent],
   imports: [CommonModule, AdminRoutingModule, CdkAccordionModule, FormsModule],
 })
 export class AdminModule {}

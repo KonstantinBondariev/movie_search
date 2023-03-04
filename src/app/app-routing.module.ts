@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 
 import { MovieComponent } from './components/movie/movie.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
+  { path: 'login', component: LoginComponent },
   {
     path: 'search',
     component: SearchComponent,

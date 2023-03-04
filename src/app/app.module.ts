@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
@@ -24,6 +26,8 @@ import { MovieUnitComponent } from './components/movie-unit/movie-unit.component
 import { MenuComponent } from './components/menu/menu.component';
 import { CommentsModule } from './modules/comments/comments.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { AdminModule } from './modules/admin/admin.module';
     MoviesListComponent,
     MovieUnitComponent,
     MenuComponent,
+    LoginComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -50,12 +55,13 @@ import { AdminModule } from './modules/admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule,
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
     CommentsModule,
     AdminModule,
+    BrowserAnimationsModule,
   ],
 })
 export class AppModule {}

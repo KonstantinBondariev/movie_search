@@ -4,6 +4,18 @@ import { CommentsService } from 'src/app/services/comments.service';
 import { CommentInterface } from 'src/app/shared/types/comment-interface';
 import { CommentsResponse } from 'src/app/shared/types/comments-response';
 import { FolderInterface } from 'src/app/shared/types/folder-interface';
+import { FoldersResponseInterface } from 'src/app/shared/types/folders-response-interface';
+
+function getAllValues(val: any): any {
+  return val instanceof Object
+    ? [].concat.apply(
+        [],
+        Object.keys(val).map(function (k) {
+          return getAllValues(val[k]);
+        })
+      )
+    : [val];
+}
 
 @Component({
   selector: 'app-manage-comments',
@@ -11,11 +23,11 @@ import { FolderInterface } from 'src/app/shared/types/folder-interface';
   styleUrls: ['./manage-comments.component.scss'],
 })
 export class ManageCommentsComponent implements OnInit {
-  folders!: any;
+  folders!: FoldersResponseInterface[];
   comments!: CommentsResponse[];
-  currentImdbID!: any;
+  currentImdbID!: string;
   expandedIndex = 0; //accordion
-  currentTarget!: any;
+  currentTarget!: EventTarget | null;
   newStatus!: boolean;
 
   constructor(
@@ -37,14 +49,20 @@ export class ManageCommentsComponent implements OnInit {
     });
   }
 
+  checkNewComments(folder: FoldersResponseInterface): boolean | void {
+    const arr: any[] = getAllValues(folder);
+    if (arr.includes(true)) return true;
+  }
+
   getFolderData(imdbId: string) {
     this.commentsService.getComments(imdbId).subscribe({
-      next: (res) => (this.comments = res),
+      next: (res) => (this.comments = res.reverse()),
+
       error: (err) => console.error(err),
     });
   }
 
-  onClick(folder: any, event: Event | MouseEvent) {
+  onClick(folder: FoldersResponseInterface, event: Event | MouseEvent) {
     if (this.currentTarget !== event.target) {
       this.getFolderData(folder.imdbId);
       this.currentImdbID = folder.imdbId;
@@ -59,10 +77,12 @@ export class ManageCommentsComponent implements OnInit {
       .subscribe({ next: () => this.getFolderData(this.currentImdbID) });
   }
 
-  updateComment(folder: string, key: string, change: any) {
-    this.adminCommentsService
-      .updateComment(folder, key, change)
-      .subscribe({ next: () => this.getFolderData(this.currentImdbID) });
+  updateComment(folder: string, key: string, change: CommentInterface) {
+    this.adminCommentsService.updateComment(folder, key, change).subscribe({
+      next: () => {
+        this.getFolderData(this.currentImdbID);
+      },
+    });
   }
 
   createComment(

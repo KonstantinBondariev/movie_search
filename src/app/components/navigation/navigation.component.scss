@@ -18,6 +18,9 @@
   @include unlist;
   display: flex;
   gap: $gap;
+  @include lg {
+    gap: $gap-sm;
+  }
   @include md {
     display: none;
   }

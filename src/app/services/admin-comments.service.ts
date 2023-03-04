@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, tap, Observable } from 'rxjs';
 import { CommentInterface } from '../shared/types/comment-interface';
 import { FolderInterface } from '../shared/types/folder-interface';
+import { FoldersResponseInterface } from '../shared/types/folders-response-interface';
 
 const urlComments =
   'https://movie-search-a1028-default-rtdb.europe-west1.firebasedatabase.app/comments/';
@@ -17,12 +18,12 @@ const httpOptions = {
 export class AdminCommentsService {
   constructor(private http: HttpClient) {}
 
-  getFolders(): Observable<any> {
-    return this.http.get<any>(`${urlComments}.json`).pipe(
+  getFolders(): Observable<FoldersResponseInterface[]> {
+    return this.http.get(`${urlComments}.json`).pipe(
       map((res: any) => {
-        const arr: any[] = [];
+        const arr: FoldersResponseInterface[] = [];
         Object.keys(res).forEach((imdbId) => {
-          arr.push({ imdbId });
+          arr.push({ imdbId, ...res[imdbId] });
         });
         return arr;
       })
