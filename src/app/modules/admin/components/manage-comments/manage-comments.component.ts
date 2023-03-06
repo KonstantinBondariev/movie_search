@@ -72,9 +72,11 @@ export class ManageCommentsComponent implements OnInit {
   }
 
   deleteComment(folder: string, key: string) {
-    this.adminCommentsService
-      .deleteComment(folder, key)
-      .subscribe({ next: () => this.getFolderData(this.currentImdbID) });
+    if (confirm('Are you sure?')) {
+      this.adminCommentsService
+        .deleteComment(folder, key)
+        .subscribe({ next: () => this.getFolderData(this.currentImdbID) });
+    }
   }
 
   updateComment(folder: string, key: string, change: CommentInterface) {

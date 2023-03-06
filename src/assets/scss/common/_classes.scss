@@ -19,9 +19,31 @@
   font-size: 1.125rem;
   font-weight: 400;
 
+  border: none;
+
+  &--sm {
+    padding: 0.25em 0.5em;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
   &:hover,
   &:focus {
     background-color: $color-accent;
+  }
+  &--primary {
+    background-color: $color-primary;
+    color: $color-gray-light;
+  }
+  &--accent {
+    background-color: $color-accent;
+
+    color: $color-gray-light;
+
+    &:hover,
+    &:focus {
+      background-color: $color-primary;
+    }
   }
   &--disabled {
     &:hover,

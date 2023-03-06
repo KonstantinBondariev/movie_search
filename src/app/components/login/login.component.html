@@ -6,7 +6,7 @@
 
 <ng-template #thenBlock>
   <div>
-    <button type="button" class="btn" (click)="logOut()">Logout</button>
+    <button type="button" class="btn btn--accent" (click)="logOut()">Logout</button>
   </div>
 </ng-template>
 
@@ -19,10 +19,9 @@
     <div class="form-group">
       <label class="label">Password</label>
       <input type="password" [(ngModel)]="userPas" class="input">
-
     </div>
     <div>
-      <button type="button" class="btn" (click)="logIn()">Login</button>
+      <button type="button" class="btn btn--accent" (click)="logIn()">Login</button>
     </div>
   </div>
 

@@ -16,20 +16,30 @@
       [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
       <div *ngIf="comments">
         <div *ngFor="let comment of comments; let i = index">
-          <div [ngClass]="{'new': comment.newStatus}">
-            <h5><b>key: </b>{{comment.key}}<span *ngIf="comment.newStatus">
+          <div class="comment" [ngClass]="{'comment--even' : i % 2 ==1,'comment--new': comment.newStatus}">
+            <em><b>key: </b>{{comment.key}}<span *ngIf="comment.newStatus">
                 <app-badge></app-badge>
-              </span></h5>
+              </span></em>
             <div><b>user name: </b>{{comment.userName}}</div>
             <div><b>date: </b>{{comment.date | date}}</div>
             <div><b>comment: </b>{{comment.comment}}</div>
-            <button (click)="deleteComment(currentImdbID, comment.key)">Dell</button>
-            <div>
-              <label for="newComment">Mark as viewed {{i}}</label>
-              <input (change)="newStatus = false" [name]="'newStatus' + i" [id]="'newStatus' + i" type="checkbox">
-              <button
-                (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))">Submit
-                Changes</button>
+            <div class="controls">
+              <div class="controls__delete">
+                <button (click)="deleteComment(currentImdbID, comment.key)"
+                  class="btn btn--accent btn--sm">Delete</button>
+
+              </div>
+              <div class="controls__update">
+                <div class="checkbox-group">
+                  <input (change)="newStatus = false" [id]="'newStatus' + i" [name]="" [id]="'newStatus' + i"
+                    type="checkbox" class="checkbox">
+                  <label [for]="'newStatus' + i">Mark as viewed</label>
+                </div>
+
+                <button (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))
+                  " class="btn btn--accent btn--sm">Update
+                  changes</button>
+              </div>
             </div>
           </div>
         </div>
