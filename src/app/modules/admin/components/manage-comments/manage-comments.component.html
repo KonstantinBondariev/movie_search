@@ -1,49 +1,45 @@
-<cdk-accordion class="example-accordion">
-  <cdk-accordion-item *ngFor="let folder of folders; let index = index;" #accordionItem="cdkAccordionItem"
-    class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
-    [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
-    <div class="example-accordion-item-header" (click)="accordionItem.toggle(); onClick(folder, $event)">
-      <div>{{ folder.imdbId }}<span *ngIf="checkNewComments(folder)">
-          <app-badge></app-badge>
+<div class="container">
+  <div><button class="btn--accent" (click)="getFolders()">Update</button></div>
+  <cdk-accordion class="example-accordion">
+    <cdk-accordion-item *ngFor="let folder of folders; let index = index;" #accordionItem="cdkAccordionItem"
+      class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
+      <div class="example-accordion-item-header" (click)="accordionItem.toggle(); onClick(folder, $event)">
+        <div>{{ folder.imdbId }}<span *ngIf="checkNewComments(folder)">
+            <app-badge [count]="CountNewComments(folder)"></app-badge>
+          </span>
+        </div>
+
+        <span class="example-accordion-item-description">
+          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
+      <div class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+        <div *ngIf="comments">
+          <div *ngFor="let comment of comments; let i = index">
+            <div class="comment" [ngClass]="{'comment--even' : i % 2 ==1,'comment--new': comment.newStatus}">
+              <em><b>key: </b>{{comment.key}}<span *ngIf="comment.newStatus">
+                  <app-badge></app-badge>
+                </span></em>
+              <div><b>user name: </b>{{comment.userName}}</div>
+              <div><b>date: </b>{{comment.date | date}}</div>
+              <div><b>comment: </b>{{comment.comment}}</div>
+              <div class="controls">
+                <div class="controls__delete">
+                  <button (click)="deleteComment(currentImdbID, comment.key)"
+                    class="btn btn--accent btn--sm">Delete</button>
 
-      <span class="example-accordion-item-description">
-        Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-      </span>
-    </div>
-    <div class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
-      [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
-      <div *ngIf="comments">
-        <div *ngFor="let comment of comments; let i = index">
-          <div class="comment" [ngClass]="{'comment--even' : i % 2 ==1,'comment--new': comment.newStatus}">
-            <em><b>key: </b>{{comment.key}}<span *ngIf="comment.newStatus">
-                <app-badge></app-badge>
-              </span></em>
-            <div><b>user name: </b>{{comment.userName}}</div>
-            <div><b>date: </b>{{comment.date | date}}</div>
-            <div><b>comment: </b>{{comment.comment}}</div>
-            <div class="controls">
-              <div class="controls__delete">
-                <button (click)="deleteComment(currentImdbID, comment.key)"
-                  class="btn btn--accent btn--sm">Delete</button>
-
-              </div>
-              <div class="controls__update">
-                <div class="checkbox-group">
-                  <input (change)="newStatus = false" [id]="'newStatus' + i" [name]="" [id]="'newStatus' + i"
-                    type="checkbox" class="checkbox">
-                  <label [for]="'newStatus' + i">Mark as viewed</label>
                 </div>
-
-                <button (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))
-                  " class="btn btn--accent btn--sm">Update
-                  changes</button>
+                <div *ngIf="comment.newStatus" class="controls__update">
+                  <button (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))
+                    " class="btn btn--accent btn--sm">Mark as read</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </cdk-accordion-item>
-</cdk-accordion>
+    </cdk-accordion-item>
+  </cdk-accordion>
+</div>

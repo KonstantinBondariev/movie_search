@@ -24,9 +24,11 @@
 
   <re-captcha formControlName="recaptchaReactive" [siteKey]="siteKey">
   </re-captcha>
+  <div>
+    <button type="submit" [disabled]="!commentForm.valid" [ngClass]="{'btn--disabled': !commentForm.valid}"
+      class="btn btn--accent">Submit</button>
+  </div>
 
-  <button type="submit" [disabled]="!commentForm.valid" [ngClass]="{'btn--disabled': !commentForm.valid}"
-    class="btn">Submit</button>
 </form>
 
 <app-comments [imdbID]="imdbId" [change]="change"></app-comments>

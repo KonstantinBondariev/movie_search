@@ -28,7 +28,6 @@ export class ManageCommentsComponent implements OnInit {
   currentImdbID!: string;
   expandedIndex = 0; //accordion
   currentTarget!: EventTarget | null;
-  newStatus!: boolean;
 
   constructor(
     private adminCommentsService: AdminCommentsService,
@@ -52,6 +51,18 @@ export class ManageCommentsComponent implements OnInit {
   checkNewComments(folder: FoldersResponseInterface): boolean | void {
     const arr: any[] = getAllValues(folder);
     if (arr.includes(true)) return true;
+  }
+
+  CountNewComments(folder: FoldersResponseInterface): number | undefined {
+    if (this.checkNewComments(folder)) {
+      const arr: any[] = getAllValues(folder);
+      let count: number = 0;
+      for (let index = 0; index < arr.length; index++) {
+        if (arr[index] === true) count += 1;
+      }
+      return count;
+    }
+    return;
   }
 
   getFolderData(imdbId: string) {
@@ -80,11 +91,9 @@ export class ManageCommentsComponent implements OnInit {
   }
 
   updateComment(folder: string, key: string, change: CommentInterface) {
-    this.adminCommentsService.updateComment(folder, key, change).subscribe({
-      next: () => {
-        this.getFolderData(this.currentImdbID);
-      },
-    });
+    this.adminCommentsService
+      .updateComment(folder, key, change)
+      .subscribe({ next: () => this.getFolderData(this.currentImdbID) });
   }
 
   createComment(
@@ -96,7 +105,7 @@ export class ManageCommentsComponent implements OnInit {
       userName,
       date,
       comment,
-      newStatus: this.newStatus,
+      newStatus: false,
     };
   }
 }
