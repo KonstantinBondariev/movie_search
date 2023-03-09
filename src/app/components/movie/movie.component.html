@@ -4,7 +4,9 @@
       <div class="movie__info">
         <div class="movie__poster">
           <img src="{{movie.Poster}}" alt="movie.Title">
-          <div><a href="{{trailerData?.videoUrl}}" target="_blank" class="btn">Watch trailer on youtube</a></div>
+          <div *ngIf="trailerData?.videoUrl" class="wrapper-btn">
+            <a href="{{trailerData?.videoUrl}}" target="_blank" class="btn btn--primary">Watch trailer on youtube</a>
+          </div>
 
         </div>
 
@@ -70,9 +72,12 @@
       </div>
 
       <div class="movie__trailer">
-        <div>
+        <div *ngIf="trailerData?.videoUrl; else elseBlock">
           <iframe id="ytplayer" type="text/html" width="640" height="360" [src]="urlSafe" frameborder="0"></iframe>
         </div>
+        <ng-template #elseBlock>
+          <img src="../../../assets/img/no_trailer.jpg" alt="no trailer">
+        </ng-template>
       </div>
     </div>
     <div class="comments">

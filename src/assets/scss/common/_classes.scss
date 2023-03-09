@@ -20,6 +20,7 @@
   font-weight: 400;
 
   border: none;
+  cursor: pointer;
 
   &--sm {
     padding: 0.25em 0.5em;
@@ -141,5 +142,11 @@
   }
   &--invalid {
     color: red;
+  }
+}
+.wrapper-btn {
+  margin-bottom: $gap;
+  @include md {
+    margin-bottom: $gap-sm;
   }
 }

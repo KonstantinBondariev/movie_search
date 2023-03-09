@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   movies?: MovieInterface[]; // nujen??
   currentPage: number = this.movieSearchService.curreantPage;
   flag: boolean = false;
+  yearsArr: string[] = [];
 
   constructor(
     private movieSearchService: MovieSearchService,
@@ -23,7 +24,9 @@ export class SearchComponent implements OnInit {
     this.movieSearch = debounce(this.movieSearch, 100);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setYearsArr();
+  }
 
   movieSearch(title: string, year: string): void {
     if (title.length < 3) return;
@@ -42,5 +45,14 @@ export class SearchComponent implements OnInit {
   }
   onKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter') this.movieSearch(this.movieTitle, this.movieYear);
+  }
+
+  setYearsArr() {
+    const now = new Date().getFullYear();
+
+    for (let year = 1900; year <= now; year++) {
+      this.yearsArr.push(`${year}`);
+    }
+    this.yearsArr.reverse();
   }
 }

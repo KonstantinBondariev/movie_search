@@ -26,7 +26,7 @@
   </div>
 
   <div class="movie-full-infor" [ngStyle]="setStyle()">
-    <div *ngIf="!movieFullInfo; else elseBlock" class="content">
+    <div *ngIf="!movieFullInfo; else elseBlock" class="movie-full-info__content">
       <mat-spinner></mat-spinner>
     </div>
     <ng-template #elseBlock>

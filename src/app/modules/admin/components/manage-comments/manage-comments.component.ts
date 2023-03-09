@@ -1,21 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminCommentsService } from 'src/app/services/admin-comments.service';
 import { CommentsService } from 'src/app/services/comments.service';
+import { GetAllValuesOfNestedObjectsService } from 'src/app/services/get-all-values-of-nested-objects.service';
 import { CommentInterface } from 'src/app/shared/types/comment-interface';
 import { CommentsResponse } from 'src/app/shared/types/comments-response';
 import { FolderInterface } from 'src/app/shared/types/folder-interface';
 import { FoldersResponseInterface } from 'src/app/shared/types/folders-response-interface';
-
-function getAllValues(val: any): any {
-  return val instanceof Object
-    ? [].concat.apply(
-        [],
-        Object.keys(val).map(function (k) {
-          return getAllValues(val[k]);
-        })
-      )
-    : [val];
-}
 
 @Component({
   selector: 'app-manage-comments',
@@ -31,7 +21,8 @@ export class ManageCommentsComponent implements OnInit {
 
   constructor(
     private adminCommentsService: AdminCommentsService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private getAllValuesOfNestedObjectsService: GetAllValuesOfNestedObjectsService
   ) {}
 
   ngOnInit(): void {
@@ -49,13 +40,15 @@ export class ManageCommentsComponent implements OnInit {
   }
 
   checkNewComments(folder: FoldersResponseInterface): boolean | void {
-    const arr: any[] = getAllValues(folder);
+    const arr: any[] =
+      this.getAllValuesOfNestedObjectsService.getAllValues(folder);
     if (arr.includes(true)) return true;
   }
 
   CountNewComments(folder: FoldersResponseInterface): number | undefined {
     if (this.checkNewComments(folder)) {
-      const arr: any[] = getAllValues(folder);
+      const arr: any[] =
+        this.getAllValuesOfNestedObjectsService.getAllValues(folder);
       let count: number = 0;
       for (let index = 0; index < arr.length; index++) {
         if (arr[index] === true) count += 1;

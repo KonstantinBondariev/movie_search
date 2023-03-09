@@ -1,5 +1,5 @@
-<div class="container">
-  <div><button class="btn--accent" (click)="getFolders()">Update</button></div>
+<div>
+  <div class="wrapper-btn"><button class="btn btn--accent" (click)="getFolders()">Update</button></div>
   <cdk-accordion class="example-accordion">
     <cdk-accordion-item *ngFor="let folder of folders; let index = index;" #accordionItem="cdkAccordionItem"
       class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
@@ -26,12 +26,12 @@
               <div><b>date: </b>{{comment.date | date}}</div>
               <div><b>comment: </b>{{comment.comment}}</div>
               <div class="controls">
-                <div class="controls__delete">
+                <div class="wrapper-btn">
                   <button (click)="deleteComment(currentImdbID, comment.key)"
                     class="btn btn--accent btn--sm">Delete</button>
 
                 </div>
-                <div *ngIf="comment.newStatus" class="controls__update">
+                <div *ngIf="comment.newStatus" class="wrapper-btn">
                   <button (click)="updateComment(currentImdbID, comment.key, createComment(comment.userName, comment.date, comment.comment))
                     " class="btn btn--accent btn--sm">Mark as read</button>
                 </div>

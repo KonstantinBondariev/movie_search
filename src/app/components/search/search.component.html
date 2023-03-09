@@ -6,10 +6,13 @@
   </div>
   <div class="form-group">
     <label for="year-search">Choose movie year: </label>
-    <input #yearSearch type="number" id="year-search" (input)="movieYear=yearSearch.value" class="input">
+    <select name="year-search" id="year-search" class="input" [(ngModel)]="movieYear">
+      <option value="">----</option>
+      <option *ngFor="let year of yearsArr" [value]="year">{{year}}</option>
+    </select>
   </div>
   <div class="form__btn-block">
-    <button (click)="movieSearch(movieTitle, movieYear)" class="btn">Search</button>
+    <button (click)="movieSearch(movieTitle, movieYear)" class="btn btn--accent">Search</button>
   </div>
 </div>
 
