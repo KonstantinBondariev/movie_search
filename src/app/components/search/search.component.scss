@@ -1,0 +1,25 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/common/classes" as *;
+@use "../../../assets/scss/presets/variables" as *;
+
+.form {
+  width: 100%;
+  &__btn-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 28px;
+    @include lg {
+      padding-top: 0;
+    }
+  }
+  @include lg-min {
+    flex-direction: row;
+  }
+}
+
+.form-control {
+  @include lg-min {
+    width: 40%;
+  }
+}

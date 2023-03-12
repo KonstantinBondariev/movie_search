@@ -1,0 +1,12 @@
+@use "../assets/scss/presets/" as *;
+
+.container {
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+main {
+  min-height: calc(100vh - 262px);
+}

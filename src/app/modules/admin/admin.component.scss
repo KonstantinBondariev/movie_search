@@ -1,0 +1,6 @@
+@use "../../../assets/scss/presets/" as *;
+.links {
+  display: flex;
+  gap: $gap;
+  margin-bottom: $gap;
+}

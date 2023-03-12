@@ -1,0 +1,37 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+
+.paginator-list {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-sm;
+  justify-content: center;
+
+  @include unlist;
+  margin-bottom: 20px;
+}
+
+.page-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  @include md {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.page-index:hover {
+  background-color: $color-gray-dark;
+  color: $color-light;
+  border-radius: 50%;
+}
+
+.active {
+  background-color: $color-accent;
+  border-radius: 100%;
+  color: $color-light;
+}

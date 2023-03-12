@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../node_modules/normalize.css/normalize.css";
+@use "assets/scss/mixins/" as *;
+@use "assets/scss/presets/" as *;
+@use "assets/scss/common/classes";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+html {
+  overflow-y: scroll;
+
+  font-family: $font-main;
+  font-size: $font-size;
+}
+body {
+  color: $color-primary;
+  background-color: $color-gray-light;
+}
+h1 {
+  margin-bottom: 2rem;
+
+  font-family: $font-header;
+  font-weight: 300;
+  line-height: 1.2em;
+
+  @include lg-min {
+    margin-bottom: 1.75rem;
+
+    letter-spacing: 0.08em; // !!!!!!
+
+    font-size: 3.75rem;
+  }
+  @include lg-md {
+    letter-spacing: 0.08em; // !!!!!!
+
+    font-size: 2.5rem;
+  }
+  @include lg {
+    letter-spacing: 0.08em; // !!!!!!
+
+    font-size: 1.875rem;
+  }
+}
+h2 {
+  margin-top: 0;
+
+  letter-spacing: 0.1em;
+
+  color: $color-primary;
+
+  font-family: $font-header;
+  font-weight: bold;
+  line-height: 1.2em;
+
+  @include lg-min {
+    margin-bottom: 1.75rem;
+
+    font-size: 2.5rem;
+  }
+  @include lg-md {
+    margin-bottom: 2.625rem;
+
+    font-size: 1.25rem;
+  }
+  @include md-sm {
+    margin-bottom: 2.25rem;
+
+    font-size: 1rem;
+  }
+  @include sm {
+    margin-bottom: 2.25rem;
+
+    text-align: center;
+  }
+}
+h3 {
+  margin: 1.125rem 0;
+
+  letter-spacing: 0.05em;
+
+  color: $color-gray;
+
+  font-size: 1.125rem;
+  font-weight: bold;
+
+  @include md {
+    font-size: 1.125rem;
+  }
+}
+
+h4 {
+  margin: 0;
+
+  letter-spacing: 0.05em;
+
+  color: $color-gray;
+
+  font-size: 1.125rem;
+  font-weight: bold;
+
+  @include md {
+    font-size: 1.1125rem;
+  }
+}
+a {
+  text-decoration: none;
+
+  color: $color-primary;
+}
+.root-container {
+  max-width: 1320px;
+  margin: 0 auto;
+
+  @include ul-xl {
+    max-width: 1140px;
+  }
+  @include xl-lg {
+    max-width: 960px;
+  }
+  @include lg-md {
+    max-width: 720px;
+  }
+  @include md-sm {
+    max-width: 540px;
+  }
+}

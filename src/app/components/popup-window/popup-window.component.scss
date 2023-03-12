@@ -1,0 +1,21 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+
+.container {
+  width: 286px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  background-color: $color-gray-light;
+  transition: all 0.5s;
+}
+.title {
+  transition: all 0.5s;
+}
+
+.mat-spinner::ng-deep circle {
+  stroke: $color-accent;
+}

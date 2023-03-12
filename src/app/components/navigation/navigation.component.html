@@ -1,0 +1,31 @@
+<div class="navbar">
+  <a href="#" class="navbar__logo ">
+    <img src="../../../assets/img/mercury.svg" alt="logo">
+  </a>
+  <div>
+    <ul class="navbar__list">
+      <li class="navbar__item">
+        <a [routerLink]='["/search"]' [routerLinkActive]="'active'" class="btn">Search movie</a>
+      </li>
+      <li class="navbar__item">
+        <a [routerLink]='["/random-movies"]' [routerLinkActive]="'active'" class="btn">Random
+          movies</a>
+      </li>
+      <li class="navbar__item">
+        <a [routerLink]='["/random-series"]' [routerLinkActive]="'active'" class="btn">Random
+          series</a>
+      </li>
+      <li class="navbar__item">
+        <a [routerLink]="['/admin']" [routerLinkActive]="'active'"
+          [ngClass]="{'btn--disabled': !authService.isLoggedIn}" class="btn">Admin</a>
+      </li>
+      <li class="navbar__item">
+        <a [routerLink]="['/login']" [routerLinkActive]="'active'" class="btn">Login</a>
+      </li>
+    </ul>
+
+    <div class="navbar__btn">
+      <app-menu></app-menu>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+@use "../../../assets/scss/presets/" as *;
+.container {
+  display: flex;
+  justify-content: end;
+  gap: $gap;
+  padding: 1rem;
+}

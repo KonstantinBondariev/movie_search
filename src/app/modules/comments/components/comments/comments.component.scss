@@ -1,0 +1,25 @@
+@use "../../../../../assets/scss/presets/" as *;
+@use "../../../../../assets/scss/mixins/" as *;
+.container {
+  padding: 0;
+  background: none;
+}
+.comment {
+  display: flex;
+  padding: 0.5rem 1rem;
+  &__info {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-sm;
+    @include md {
+      min-width: 100px;
+    }
+  }
+  &__user-name {
+    font-weight: 400;
+  }
+  &__date {
+    font-size: 0.85rem;
+  }
+}

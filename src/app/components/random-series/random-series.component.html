@@ -1,0 +1,4 @@
+<div class="wrapper-btn">
+  <button (click)="clearMovies(); getRandomMovies('series')" class="btn btn--accent">Suggest random movies</button>
+</div>
+<app-movies-list [movies]="series"></app-movies-list>

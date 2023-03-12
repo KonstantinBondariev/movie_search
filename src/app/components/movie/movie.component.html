@@ -1,0 +1,88 @@
+<ng-template [ngIf]="movie">
+  <div class="container">
+    <div class="movie">
+      <div class="movie__info">
+        <div class="movie__poster">
+          <img src="{{movie.Poster}}" alt="movie.Title">
+          <div *ngIf="trailerData?.videoUrl" class="wrapper-btn">
+            <a href="{{trailerData?.videoUrl}}" target="_blank" class="btn btn--primary">Watch trailer on youtube</a>
+          </div>
+
+        </div>
+
+        <div class="movie__title">
+          <h2 class=>{{movie.Title}}</h2>
+          <app-rating [imdbRating]="movie.imdbRating"></app-rating>
+        </div>
+
+        <div class="movie__details">
+          <table>
+            <tr>
+              <td><b>Ratings:</b></td>
+              <td>
+                <span class="reitings__item">IMDB rating: <b>{{movie.imdbRating}}</b>;</span>
+                <span *ngFor="let source of movie.Ratings" class="reitings__item"> {{source.Source}}:
+                  <b> {{source.Value}}</b>;</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td><b>Movie type:</b></td>
+              <td>{{movie.Type}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Released:</b></td>
+              <td>{{movie.Released}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Country:</b></td>
+              <td>
+                {{movie.Country}}
+              </td>
+            </tr>
+
+            <tr>
+              <td><b>Director:</b></td>
+              <td>{{movie.Director}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Ganre:</b></td>
+              <td>{{movie.Genre}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Runtime:</b></td>
+              <td>{{movie.Runtime}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Cast:</b></td>
+              <td>{{movie.Actors}}</td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="movie__plot">
+        <b>Storyline: </b> <span>{{movie.Plot}}</span>
+      </div>
+
+      <div class="movie__trailer">
+        <div *ngIf="trailerData?.videoUrl; else elseBlock">
+          <iframe id="ytplayer" type="text/html" width="640" height="360" [src]="urlSafe" frameborder="0"></iframe>
+        </div>
+        <ng-template #elseBlock>
+          <img src="../../../assets/img/no_trailer.jpg" alt="no trailer">
+        </ng-template>
+      </div>
+    </div>
+    <div class="comments">
+      <app-comment-form [imdbId]="imdbId"></app-comment-form>
+
+    </div>
+  </div>
+</ng-template>

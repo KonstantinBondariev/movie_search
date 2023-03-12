@@ -1,0 +1,21 @@
+<button class="menu-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <div>
+    <a routerLink="/search">Search movie</a>
+  </div>
+
+  <div>
+    <a routerLink="/random-movies">Random movies</a>
+  </div>
+  <div>
+    <a routerLink="/random-series">Random series</a>
+  </div>
+  <div>
+    <a routerLink="/admin" [ngClass]="{'disabled': !authService.isLoggedIn}">Admin</a>
+  </div>
+  <div>
+    <a routerLink="/login">Login</a>
+  </div>
+</mat-menu>

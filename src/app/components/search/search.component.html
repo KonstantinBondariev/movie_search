@@ -1,0 +1,25 @@
+<div class="form">
+  <div class="form-group">
+    <label for="title-search">Enter movie title: </label>
+    <input (keyup)="onKeyDown($event)" #titleSearch type="text" id="title-search" placeholder="title"
+      (input)="movieTitle=titleSearch.value" class="input">
+  </div>
+  <div class="form-group">
+    <label for="year-search">Choose movie year: </label>
+    <select name="year-search" id="year-search" class="input" [(ngModel)]="movieYear">
+      <option value="">----</option>
+      <option *ngFor="let year of yearsArr" [value]="year">{{year}}</option>
+    </select>
+  </div>
+  <div class="form__btn-block">
+    <button (click)="movieSearch(movieTitle, movieYear)" class="btn btn--accent">Search</button>
+  </div>
+</div>
+
+<ng-template [ngIf]="movies && flag">
+  <router-outlet></router-outlet>
+</ng-template>
+<!-- to refresh page component on movieSearch() =) -->
+<ng-template [ngIf]="movies && !flag">
+  <router-outlet></router-outlet>
+</ng-template>

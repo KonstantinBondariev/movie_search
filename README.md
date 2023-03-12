@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
+Hosting URL: https://movie-search-a1028.web.app
+
+web services: https://www.omdbapi.com/ - used to find movies;
+https://imdb-api.com/ used to get trailers data.
+
+firebase deploy: firebase deploy --only hosting
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

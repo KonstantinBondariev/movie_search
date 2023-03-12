@@ -1,0 +1,13 @@
+@use "../../../../../assets/scss/presets/" as *;
+
+div {
+  display: inline-block;
+  text-align: center;
+  padding: 2px 5px;
+  background-color: $color-accent;
+  border-radius: 20%;
+  color: $color-gray-light;
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: 200;
+}

@@ -1,0 +1,9 @@
+<div *ngIf="count && count > 0; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <div>{{count}}</div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div>new</div>
+</ng-template>

@@ -1,0 +1,51 @@
+@use "../../../assets/scss/mixins/" as *;
+@use "../../../assets/scss/presets/" as *;
+.movies {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: 400px;
+  grid-row-gap: 20px;
+  gap: 20px;
+
+  @include lg {
+  }
+}
+
+.movie {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-gray-light;
+  position: relative;
+
+  &__title {
+    height: 10%;
+    background-color: $color-light;
+    text-align: center;
+  }
+
+  .poster {
+    width: 100%;
+    min-height: 90%;
+    max-height: 90%;
+
+    &__img {
+      object-fit: cover;
+      width: 100%;
+      min-height: 100%;
+      max-height: 100%;
+    }
+
+    &__icon {
+      width: 10%;
+
+      background-color: $color-light;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
