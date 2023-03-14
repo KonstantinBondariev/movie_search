@@ -27,7 +27,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CommentsModule } from './modules/comments/comments.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,15 +54,17 @@ import { FormsModule } from '@angular/forms';
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
+    FormsModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
     CommentsModule,
     AdminModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AppModule {}

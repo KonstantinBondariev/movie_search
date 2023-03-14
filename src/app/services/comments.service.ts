@@ -14,8 +14,14 @@ const urlComments =
 export class CommentsService {
   constructor(private http: HttpClient) {}
 
-  createComment(comment: CommentInterface, imdbID: string): Observable<any> {
-    return this.http.post(`${urlComments}${imdbID}.json`, comment);
+  createComment(
+    comment: CommentInterface,
+    imdbID: string
+  ): Observable<CommentsDbResponseInterface> {
+    return this.http.post<CommentsDbResponseInterface>(
+      `${urlComments}${imdbID}.json`,
+      comment
+    );
   }
 
   getComments(imdbID: string): Observable<CommentsResponse[]> {

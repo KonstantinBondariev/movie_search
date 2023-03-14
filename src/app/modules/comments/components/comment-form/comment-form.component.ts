@@ -26,11 +26,12 @@ export class CommentFormComponent implements OnInit {
 
   comment = this.commentForm.controls.comment;
   userName = this.commentForm.controls.userName;
+  change: boolean = false; // to refresh comments.component
+
+  @Input() imdbId!: string | null;
 
   constructor(private commentsService: CommentsService) {}
 
-  @Input() imdbId!: string | null;
-  change: boolean = false; // to refresh comments.component
   ngOnInit(): void {}
 
   onSubmit(): void {

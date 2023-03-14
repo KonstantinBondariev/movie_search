@@ -1,20 +1,31 @@
-<div class="form">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="form">
   <div class="form-group">
-    <label for="title-search">Enter movie title: </label>
-    <input (keyup)="onKeyDown($event)" #titleSearch type="text" id="title-search" placeholder="title"
-      (input)="movieTitle=titleSearch.value" class="input">
+    <label for="title"
+      [ngClass]="{'label--valid': titleControl.valid, 'label--invalid': (titleControl.dirty) && !titleControl.valid}"
+      class="label">Enter title:
+      <span *ngIf="titleControl.invalid && titleControl.dirty">* Name must be more than 3 symbols</span>
+    </label>
+
+    <input id="title" type="text" formControlName="title" class="input" placeholder="Title"
+      [ngClass]="{'input--valid': titleControl.valid, 'input--invalid': (titleControl.dirty  ) && !titleControl.valid}">
   </div>
+
   <div class="form-group">
-    <label for="year-search">Choose movie year: </label>
-    <select name="year-search" id="year-search" class="input" [(ngModel)]="movieYear">
+    <label for="year" class="label">Choose year of movie</label>
+
+    <select id="year" formControlName="year" class="input" formControlName="year">
       <option value="">----</option>
       <option *ngFor="let year of yearsArr" [value]="year">{{year}}</option>
     </select>
   </div>
+
   <div class="form__btn-block">
-    <button (click)="movieSearch(movieTitle, movieYear)" class="btn btn--accent">Search</button>
+    <button type="submit" [disabled]="!searchForm.valid" [ngClass]="{'btn--disabled': !searchForm.valid}"
+      class="btn btn--accent">
+      Search
+    </button>
   </div>
-</div>
+</form>
 
 <ng-template [ngIf]="movies && flag">
   <router-outlet></router-outlet>

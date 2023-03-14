@@ -30,15 +30,21 @@ export class AdminCommentsService {
     );
   }
 
-  deleteComment(folder: string, key: string): Observable<any> {
+  deleteComment(folder: string, key: string): Observable<null> {
     return this.http
       .delete<any>(`${urlComments}/${folder}/${key}.json`, httpOptions)
-      .pipe(tap((_: any) => console.log(`deleted `)));
+      .pipe(tap((_: any) => console.log(`deleted`)))
+      .pipe(tap({ next: (res) => console.log(res) }));
   }
 
-  updateComment(folder: string, key: string, change: any): Observable<any> {
+  updateComment(
+    folder: string,
+    key: string,
+    change: any
+  ): Observable<CommentInterface> {
     return this.http
       .put<any>(`${urlComments}/${folder}/${key}.json`, change, httpOptions)
-      .pipe(tap((_) => console.log(`updated`)));
+      .pipe(tap((_) => console.log(`updated ${change}`)))
+      .pipe(tap({ next: (res) => console.log(res) }));
   }
 }

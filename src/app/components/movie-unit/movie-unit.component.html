@@ -25,9 +25,11 @@
     </div>
   </div>
 
-  <div class="movie-full-infor" [ngStyle]="setStyle()">
-    <div *ngIf="!movieFullInfo; else elseBlock" class="movie-full-info__content">
-      <mat-spinner></mat-spinner>
+  <div class="movie-full-info" [ngStyle]="setStyle()">
+    <div *ngIf="!movieFullInfo; else elseBlock" class="movie-full-info__content movie-full-info__content--spiner ">
+      <div>
+        <mat-spinner></mat-spinner>
+      </div>
     </div>
     <ng-template #elseBlock>
       <div class="movie-full-info__content">
@@ -35,7 +37,7 @@
           <h4 class="title">{{movieFullInfo?.Title}}</h4>
           <app-rating [imdbRating]="movieFullInfo?.imdbRating"></app-rating>
         </div>
-        <div class="movie-full-infor__info">
+        <div class="movie-full-info__info">
           <div><b>Genre: </b>{{movieFullInfo?.Genre}}</div>
           <div><b>Director: </b>{{movieFullInfo?.Director}}</div>
           <div><b>Сast: </b>{{movieFullInfo?.Actors}}</div>
@@ -49,7 +51,7 @@
             </span>
           </div>
         </div>
-        <div class="movie-full-infor__imdb-rating">Imdb rating: <b>{{movieFullInfo?.imdbRating}}</b></div>
+        <div class="movie-full-info__imdb-rating">Imdb rating: <b>{{movieFullInfo?.imdbRating}}</b></div>
       </div>
     </ng-template>
   </div>

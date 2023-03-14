@@ -4,14 +4,25 @@ import { MovieInterface } from 'src/app/shared/types/movie-interface';
 import { OMDbAPIResponseInterface } from 'src/app/shared/types/omdb-api-response-interface';
 import { debounce } from 'lodash';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  movieTitle: string = '';
-  movieYear: string = '';
+  now: number = new Date().getFullYear();
+
+  searchForm = new FormGroup({
+    title: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    year: new FormControl(''),
+  });
+
+  titleControl = this.searchForm.controls.title;
+  yearControl = this.searchForm.controls.year;
+
+  movieTitle!: string;
+  movieYear!: string;
   movies?: MovieInterface[]; // nujen??
   currentPage: number = this.movieSearchService.curreantPage;
   flag: boolean = false;
@@ -28,8 +39,15 @@ export class SearchComponent implements OnInit {
     this.setYearsArr();
   }
 
+  onSubmit() {
+    this.movieTitle = this.titleControl.value || '';
+    this.movieYear = this.yearControl.value || '';
+    console.log(this.movieTitle);
+
+    this.movieSearch(this.movieTitle, this.movieYear);
+  }
+
   movieSearch(title: string, year: string): void {
-    if (title.length < 3) return;
     this.movieSearchService.currentTitle = title;
     this.movieSearchService.currentYear = year;
     this.movieSearchService.curreantPage = 1;
@@ -43,14 +61,13 @@ export class SearchComponent implements OnInit {
       error: (err) => console.error(err),
     });
   }
+
   onKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter') this.movieSearch(this.movieTitle, this.movieYear);
   }
 
   setYearsArr() {
-    const now = new Date().getFullYear();
-
-    for (let year = 1900; year <= now; year++) {
+    for (let year = 1900; year <= this.now; year++) {
       this.yearsArr.push(`${year}`);
     }
     this.yearsArr.reverse();

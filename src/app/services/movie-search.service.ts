@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { OMDbAPIResponseInterface } from '../shared/types/omdb-api-response-interface';
 import { MovieInterface } from '../shared/types/movie-interface';
 import { MovieFullDataInterface } from '../shared/types/movie-full-data-interface';
@@ -38,10 +38,10 @@ export class MovieSearchService {
     page: any = this.curreantPage,
     type: string = ''
   ): Observable<OMDbAPIResponseInterface | undefined> {
-    console.log('page in service', title, year, page);
-
-    return this.http.get<OMDbAPIResponseInterface | undefined>(
-      `${url}&s=${title}&y=${year}&page=${page}&type=${type}`
-    );
+    return this.http
+      .get<OMDbAPIResponseInterface | undefined>(
+        `${url}&s=${title.toLowerCase()}&y=${year}&page=${page}&type=${type}`
+      )
+      .pipe(tap({ next: (res) => console.log(res) }));
   }
 }

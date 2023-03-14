@@ -47,7 +47,7 @@
   }
 }
 
-.movie-full-infor {
+.movie-full-info {
   display: none;
   position: absolute;
   top: 0;
@@ -69,6 +69,15 @@
 
   &__info {
     line-height: 1.25rem;
+  }
+  &__content {
+    width: 100%;
+    height: 100%;
+    &--spiner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
