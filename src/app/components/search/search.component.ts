@@ -11,8 +11,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  now: number = new Date().getFullYear();
-
   searchForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(3)]),
     year: new FormControl(''),
@@ -23,9 +21,13 @@ export class SearchComponent implements OnInit {
 
   movieTitle!: string;
   movieYear!: string;
+
   movies?: MovieInterface[]; // nujen??
   currentPage: number = this.movieSearchService.curreantPage;
-  flag: boolean = false;
+
+  respounse?: boolean; ////nnnnnn
+  flag?: boolean;
+
   yearsArr: string[] = [];
 
   constructor(
@@ -53,6 +55,12 @@ export class SearchComponent implements OnInit {
     this.movieSearchService.curreantPage = 1;
     this.movieSearchService.searchMovie(title, year).subscribe({
       next: (res: OMDbAPIResponseInterface | undefined) => {
+        if (res?.Response == 'False') {
+          this.respounse = false;
+          return;
+        }
+
+        this.respounse = true;
         this.movies = res?.Search;
         this.movieSearchService.totalResult = res?.totalResults;
         this.movieSearchService.currentMovies = res?.Search;
@@ -67,7 +75,8 @@ export class SearchComponent implements OnInit {
   }
 
   setYearsArr() {
-    for (let year = 1900; year <= this.now; year++) {
+    const now = new Date().getFullYear();
+    for (let year = 1900; year <= now; year++) {
       this.yearsArr.push(`${year}`);
     }
     this.yearsArr.reverse();

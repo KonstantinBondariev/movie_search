@@ -3,7 +3,7 @@
     <label for="title"
       [ngClass]="{'label--valid': titleControl.valid, 'label--invalid': (titleControl.dirty) && !titleControl.valid}"
       class="label">Enter title:
-      <span *ngIf="titleControl.invalid && titleControl.dirty">* Name must be more than 3 symbols</span>
+      <span *ngIf="titleControl.invalid && titleControl.dirty">* Title must be more than 2 symbols</span>
     </label>
 
     <input id="title" type="text" formControlName="title" class="input" placeholder="Title"
@@ -27,10 +27,18 @@
   </div>
 </form>
 
-<ng-template [ngIf]="movies && flag">
-  <router-outlet></router-outlet>
-</ng-template>
-<!-- to refresh page component on movieSearch() =) -->
-<ng-template [ngIf]="movies && !flag">
-  <router-outlet></router-outlet>
+<div *ngIf="!respounse && respounse !== undefined; else elseBlock">
+  Movie not find
+</div>
+
+<ng-template #elseBlock>
+  <div>
+    <ng-template [ngIf]="movies && flag">
+      <router-outlet></router-outlet>
+    </ng-template>
+    <!-- to refresh page component on movieSearch() =) -->
+    <ng-template [ngIf]="movies && !flag">
+      <router-outlet></router-outlet>
+    </ng-template>
+  </div>
 </ng-template>
